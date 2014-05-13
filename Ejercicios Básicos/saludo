@@ -1,0 +1,16 @@
+=begin
+ Ejercicio 01: Desarrollar un programa que permita al usuario ingresar su nombre y edad y muestre el saludo 
+ Hola <NOMBRE>, tienes <EDAD> años.
+=end
+#encoding : UTF-8
+def saludo(nombre, edad)
+  return "Hola " + nombre + " tienes " + edad + " años"
+end
+
+#----Programa Principal
+
+puts "Ingrese el nombre"
+n = gets.chomp
+puts "Ingrese la edad"
+e = gets.chomp
+puts saludo(n, e)
