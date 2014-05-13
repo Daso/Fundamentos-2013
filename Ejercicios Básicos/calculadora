@@ -1,0 +1,18 @@
+#Ejemplo de recibir parámetros
+
+def suma(a, b)
+  return a + b
+end
+
+def resta(c, d)
+  return c - d
+end
+
+#---------Programa Principal
+
+puts "Ingresa el primer valor"
+x = gets.to_i
+puts "Ingrese el segundo valor"
+y = gets.to_i
+puts suma(x, y)
+puts resta(x, y)
