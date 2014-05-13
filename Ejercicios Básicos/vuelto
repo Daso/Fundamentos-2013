@@ -1,0 +1,29 @@
+=begin
+Ejercicio 06: Desarrollar un programa que me permita ingresar un monto y me permita mostrar en qué billetes puedo entregarlo priorizando los de mayor valor tomando en cuenta que los billetes de mayor denominación tienen prioridad. Los billetes son de 50, 20, 5 y 1
+
+Ejemplo:
+
+Monto = 127
+
+La salida será 
+
+2 billetes de 50
+1 billete de 20
+1 billete de 5
+2 billetes de 1
+
+=end
+def vuelto(monto)
+  billetes50 = monto / 50
+  monto = monto % 50
+  billetes20 = monto / 20
+  monto = monto % 20
+  billetes5 = monto / 5
+  monto = monto % 5
+  return billetes50.to_s + "billetes de 50 " + billetes20.to_s + " billetes de 20 " + billetes5.to_s + " billetes de 5 " + monto.to_s + " billetes de 1"
+end
+
+#---Programa principal
+puts "Ingrese el monto"
+monto = gets.to_i
+puts vuelto(monto)
