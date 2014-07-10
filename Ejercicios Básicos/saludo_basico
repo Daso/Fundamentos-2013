@@ -1,0 +1,17 @@
+=begin
+Crear un programa que permita 
+ingresar un nombre y emita el saludo
+Hola y el nombre
+=end
+def saludo(nombre)
+  return "Hola " + nombre
+end
+
+def despedida(nombre)
+  return "Chau " + nombre
+end
+#---Programa principal
+puts "Ingrese su nombre"
+nombre = gets.chomp
+puts saludo(nombre)
+puts despedida(nombre)
