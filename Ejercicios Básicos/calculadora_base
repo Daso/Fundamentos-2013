@@ -1,0 +1,16 @@
+=begin
+Desarrollar una aplicación que permita 
+sumar y restar dos valores
+=end
+def suma(a, b)
+ return a + b
+end
+
+def resta(a, b)
+ return a - b
+end
+
+#----Programa principal
+
+puts suma(3, 8)
+puts resta(9, 21)
