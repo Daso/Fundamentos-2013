@@ -42,15 +42,15 @@ end
 
 def calcularDescuentoCantidad(cantidad)
 
-if cantidad >= 1 && cantidad <= 10
- return 0.00
-elsif cantidad >=11 && cantidad <= 100
- return 0.15
-elsif cantidad >= 101 && cantidad <= 200
-  return 0.21
-else
-  return 0.25
-end
+  if cantidad >= 1 && cantidad <= 10
+   return 0.00
+  elsif cantidad >=11 && cantidad <= 100
+   return 0.15
+  elsif cantidad >= 101 && cantidad <= 200
+   return 0.21
+  else
+   return 0.25
+  end
 end
 
 
