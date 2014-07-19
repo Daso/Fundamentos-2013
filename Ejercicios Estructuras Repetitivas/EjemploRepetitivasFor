@@ -1,0 +1,12 @@
+def ciclo(inicio, fin)
+  mensaje = ""
+  for i in inicio..fin
+    mensaje = mensaje + " " + i.to_s
+  end
+  return mensaje
+end
+puts "Ingrese el valor menor"
+valor_menor = gets.to_i
+puts "Ingrese el valor mayor"
+valor_mayor = gets.to_i 
+puts ciclo(valor_menor, valor_mayor)
