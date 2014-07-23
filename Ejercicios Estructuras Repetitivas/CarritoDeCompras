@@ -1,0 +1,31 @@
+#encoding : utf-8
+=begin
+Desarrollar un programa que me permita ingresar el precio de una serie de productos
+uno a uno y que pregunte si deseo ingresar un nuevo producto. Cuando el usuario 
+responda 'n' de no deberá mostrar la cantidad de productos ingresados, el precio 
+a pagar, el IGV y el total con IGV a pagar. 
+=end
+IGV = 0.18
+def carrito
+  mensaje = " "
+  respuesta = "s"
+  total = 0
+  contador = 0
+  while(respuesta != "n")
+    puts "Ingrese el precio"
+    precio = gets.to_f
+    total = total + precio	
+	contador = contador + 1
+    puts "¿Desea ingresar otro producto?"
+	respuesta = gets.chomp   
+  end
+  igv = total * IGV
+  total_con_igv = total + igv
+  mensaje += "El costo total es: " + total.to_s + "\n"
+  mensaje += "La cantidad de productos es: " + contador.to_s + "\n"
+  mensaje += "El IGV es: " + igv.to_s + "\n"
+  mensaje += "El total a pagar es: " + total_con_igv.to_s
+  return mensaje
+end
+
+puts carrito
