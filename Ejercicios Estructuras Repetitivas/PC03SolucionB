@@ -1,0 +1,58 @@
+=begin
+Una empresa desea una aplicación que le permita calcular la 
+cantidad de almíbar que necesitan las latas de conservas de
+ frutas para proceder con el enlatado respectivo. Para ello se 
+ sabe que la cantidad de almíbar por lata es la siguiente:
+		
+0.25gr por cada lata de conservas de piña.
+0.35gr por cada lata de conservas de durazno. 
+0.45gr por cada lata de conservas de surtidas.   
+
+El total a calcular por cada tipo debe ser para toda la producción de 
+los próximos meses teniendo en consideración que la cantidad de 
+latas se incrementa en un 15% mensual po estudios estadísticos 
+realizados.
+
+Desarrollar el programa que permita a calcular la cantidad total de 
+almíbar para los enlatados de los próximos meses
+
+=end
+# encoding:utf-8
+def cantidadalmibar(tipo, latas, meses) 
+factor = 0
+total = 0
+  case tipo
+    when 'piña'
+	  factor = 0.25
+	when 'durazno'
+	  factor = 0.35
+	when 'surtidas'
+	  factor = 0.45
+   end	
+	for i in 1..meses
+	  total = total + (latas * factor)
+	  latas = latas + (latas * 0.15)
+	end
+	return total.round(2)
+end
+
+#--- zona de test ----
+
+def test_cantidadalmibar
+    print validate(7659.52, cantidadalmibar('piña',3500,6))
+    print validate(24021.93, cantidadalmibar('durazno',5000,8))    
+    print validate(6291.65, cantidadalmibar('surtidas',2800,4))    
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_cantidadalmibar
+  puts " "
+end
+test
