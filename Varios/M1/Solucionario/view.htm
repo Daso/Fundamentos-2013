@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es" xml:lang="es">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/theme/standard/styles.php" />
+<link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/theme/upc2/styles.php" />
+
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/theme/standard/styles_ie7.css" />
+<![endif]-->
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/theme/standard/styles_ie6.css" />
+<![endif]-->
+
+
+    <meta name="keywords" content="moodle, IS147-Fundament: Pregunta01-martes " />
+    <title>IS147-Fundament: Pregunta01-martes</title>
+    <link rel="shortcut icon" href="http://moodle.upc.edu.pe/theme/upc2/favicon.ico" />
+    <!--<style type="text/css">/*<![CDATA[*/ body{behavior:url(http://moodle.upc.edu.pe/lib/csshover.htc);} /*]]>*/</style>-->
+
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/javascript-static.js"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/javascript-mod.php"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/overlib/overlib.js"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/overlib/overlib_cssstyle.js"></script>
+
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/cookies.js"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/ufo.js"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/dropdown.js"></script>
+
+<!-- Jquery -->
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery.js"></script>  
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery_scripts.js"></script>  
+
+<!-- Jquery Corner -->
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery/jquery_corner.js"></script>  
+
+<!--  datapicker -->
+<link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/lib/jquery/datapicker/datapicker.css" />
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery/datapicker/datapicker.js"></script>
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery/datapicker/calendario.js"></script>
+<!--  jCarousel library -->
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery/carousel/jquery.jcarousel.min.js"></script>
+<!--  jCarousel skin stylesheet -->
+<link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/lib/jquery/carousel/skins/tango/skin.css" />
+<!--  JQUERY ui -->
+<script type="text/javascript" src="http://moodle.upc.edu.pe/lib/jquery/jquery-ui-1.8.12.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://moodle.upc.edu.pe/lib/jquery/jquery-ui-1.8.12.custom.css" />
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+setTimeout('fix_column_widths()', 20);
+
+function openpopup(url1,name1,options,fullscreen) {
+  fullurl = "http://moodle.upc.edu.pe" + url1;
+  windowobj = window.open(fullurl,name1,options);
+  if (fullscreen) {
+     windowobj.moveTo(0,0);
+     windowobj.resizeTo(screen.availWidth,screen.availHeight);
+  }
+  windowobj.focus();
+  return false;
+}
+
+function uncheckall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=0);
+  }
+}
+
+function checkall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=1);
+  }
+}
+
+function inserttext(text) {
+  text = ' ' + text + ' ';
+  if ( opener.document.forms['theform'].message.createTextRange && opener.document.forms['theform'].message.caretPos) {
+    var caretPos = opener.document.forms['theform'].message.caretPos;
+    caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+  } else {
+    opener.document.forms['theform'].message.value  += text;
+  }
+  opener.document.forms['theform'].message.focus();
+}
+
+function getElementsByClassName(oElm, strTagName, oClassNames){
+	var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
+	var arrReturnElements = new Array();
+	var arrRegExpClassNames = new Array();
+	if(typeof oClassNames == "object"){
+		for(var i=0; i<oClassNames.length; i++){
+			arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)"));
+		}
+	}
+	else{
+		arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)"));
+	}
+	var oElement;
+	var bMatchesAll;
+	for(var j=0; j<arrElements.length; j++){
+		oElement = arrElements[j];
+		bMatchesAll = true;
+		for(var k=0; k<arrRegExpClassNames.length; k++){
+			if(!arrRegExpClassNames[k].test(oElement.className)){
+				bMatchesAll = false;
+				break;
+			}
+		}
+		if(bMatchesAll){
+			arrReturnElements.push(oElement);
+		}
+	}
+	return (arrReturnElements)
+}
+
+//]]>
+</script>
+</head>
+
+<body  class="mod-resource course-14824 nocoursepage editing lang-es_utf8" id="mod-resource-view">
+
+<div id="page">
+	
+	<div id="topbar">
+		<div id="innerTopbar">
+			<ul id="leftlinks">
+				<li><a href="http://www.upc.edu.pe" target="_blank">UPC</a></li>
+				<li><a href="http://www.upc.edu.pe/0/upc.aspx/redes-sociales" target="_blank">REDES SOCIALES</a></li>
+				<li><a href="http://blogs.upc.edu.pe/upctv/content/transmision-en-vivo" target="_blank">UPCTV</a></li>
+			</ul>
+			<ul id="rightlinks">
+				<li><a href="http://www.upc.edu.pe/apps/autenticacion-correo/" target="_blank">CORREO</a></li>
+				<li><a href="http://intranet.upc.edu.pe/" target="_blank">INTRANET</a></li>
+				<li><a href="http://ci.upc.edu.pe/" target="_blank">CENTRO DE INFORMACI&Oacute;N</a></li>
+			</ul>
+		</div>
+	</div>
+    <div id="header" class=" clearfix">      	<div id="innerHedar">
+			<div id="logo_aulavirtual">
+				<h1 class="headermain"><a href="http://moodle.upc.edu.pe"><img src="http://moodle.upc.edu.pe/theme/upc2/img/logoUPC.png" alt="Aula Virtual" /></a></h1>
+			</div>
+			<div id="userinfo">
+				<div id="userperfil">
+					<div class="headermenu"><div class="navigation">
+<ul><li>
+<a title="Todas las entradas" onclick="this.target='_top';" href="http://moodle.upc.edu.pe/course/report/log/index.php?chooselog=1&amp;user=0&amp;date=0&amp;id=14824&amp;modid=719748"><img class="icon log" src="http://moodle.upc.edu.pe/pix/i/log.gif" alt="Todas las entradas" /></a>
+</li><li>
+<form action="http://moodle.upc.edu.pe/mod/assignment/view.php" onclick="this.target='_top';">
+<div>
+<input type="hidden" name="id" value="719744" />
+<button type="submit" title="Actividad anterior"><span class="arrow ">&#x25C4;</span><span class="accesshide " >&nbsp;Actividad anterior</span>
+</button>
+</div>
+</form>
+</li>
+<li><form action="http://moodle.upc.edu.pe/course/jumpto.php" method="get"  id="navmenupopup" class="popupform"><div><select id="navmenupopup_jump" name="jump" onchange="self.location=document.getElementById('navmenupopup').jump.options[document.getElementById('navmenupopup').jump.selectedIndex].value;">
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676556" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Novedades</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676859" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Guía del estudiante)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676860" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Wiki del Curso</option>
+   <optgroup label="Tema 1">   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676862" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Guión del alumno para el taller de inducción</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676863" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">1. Introducción a mi curso UPC Online</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676864" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Preguntas frecuentes</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676865" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">UPC Online</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676866" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">2. Tutorial del Aula Virtual</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676867" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Tutorial del Aula Virtual (pdf)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676868" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">¿Qué hacer cuándo tengo dificultades técnicas ...</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676870" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">3. Edita tu perfil</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676871" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">4. Foro de presentación</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676872" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">5. Tarea: Datos de contacto</option>
+   <option value="http://moodle.upc.edu.pe/mod/quiz/view.php?id=676873" style="background-image: url(http://moodle.upc.edu.pe/mod/quiz/icon.gif);">6. Evaluación en línea</option>
+   </optgroup>   <optgroup label="Tema 2">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676875" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Semana 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676876" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Guión del Alumno - MTA 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676878" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Conceptos Básicos de Programación</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676879" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Elementos Básicos de programación</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676880" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Herramientas de Programación</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676882" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Programa calendarizado del curso</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676884" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 1 - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676885" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 1 - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676886" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 1 - Ejemplo</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676887" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios MTA - 1</option>
+   </optgroup>   <optgroup label="Tema 3">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676889" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Semana 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676890" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Guión del Alumno - MTA2 - MTA3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676892" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Pseudocódigo - Material adicional</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676893" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Pseudocódigo y Lenguajes de Programación.</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676896" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2 - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676897" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2 - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676898" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2 - parte 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676900" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2: Ejemplo Simples</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676901" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2: Ejemplo Dobles</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676902" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2: Ejemplo Compuestas</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676903" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 2: Ejemplo Múltiples</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676904" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Materiales adicionales Estructuras Selectivas</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676905" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios MTA 2 - MTA 3</option>
+   </optgroup>   <optgroup label="Tema 4">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676907" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Semana 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676911" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3 - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676912" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3 - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676913" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3 - parte 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676915" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3: Ejemplo Mientras</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676916" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3: Ejemplo Repetir</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676917" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 3: Ejemplo Para hacer</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676918" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Material adicional estructuras repetitivas</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676919" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Estándares de Pseudocódigo</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676920" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas sobre sentencias iterativas - Profesor R...)</option>
+   </optgroup>   <optgroup label="Tema 5">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676922" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Semana 4</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676923" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Guión del alumno 2012-0 Semana 4 y 5)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676924" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Guión del alumno)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676926" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676927" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676928" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Java Básico</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676929" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">BufferedReader</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676932" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 4 - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676933" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 4 - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676934" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 4 - parte 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676935" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Parte 01 (MTA 4)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676936" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 01 - PC01 12:50pm / 2:00pm)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676937" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 02 - PC01 6:00pm / 8:00pm)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676938" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto Final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676939" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676940" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Desarrollo PC02 - prof Daniel Subauste)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676941" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Práctica Calificada 02 Miércoles)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676942" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución Práctica Calificada 02 prof Daniel Su...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676943" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios de programacion java basicos</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676945" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 4 - C11B - prof...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676946" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios a desarrollar y subir la solucion)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676947" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion de ejercicios)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676949" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Practica 2 - Horario Martes - Prof Zico ...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676950" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Practica 2 - Horario Martes - Prof Zico H...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676951" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 2 - Horario Jueves - Prof Zico Herrera)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676953" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC02 B11A prof Daniel Subauste)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676954" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(PC02 B11A prof Daniel Subauste)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676955" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de consultas Java prof Daniel Subauste B11A)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676956" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios - prof Daniel Subauste)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676957" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 4 - E11A - prof...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676958" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 4 - prof Zico H...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676959" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto puntos adicionales PC02)</option>
+   </optgroup>   <optgroup label="Tema 6">   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676960" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios con TDD y enunciado</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676963" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto en Clase E11A)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676964" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios PC02 en JAVA parte 01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676965" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Desarrollados en Clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676966" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Desarrollados en Clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676967" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicio Mayor / Menor desarrollado)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676970" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 5 - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676971" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">MTA 5 - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676972" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios en clase parte 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676973" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Adicionales)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676974" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Reto 01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676975" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Reto 02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676976" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Modulo_2011_-_2_-_M2/Ejercicios_Java_Repetitivas)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676977" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676978" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676979" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas de los ejercicios a resolver)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676980" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 01 - PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676981" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 02 - PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676982" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Simulacro PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676984" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Practica 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676985" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Practica 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676986" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Desarrollo Tarea 06 - Java Profesor Roberto Montero)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676987" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas java - Profesor Roberto montero)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676988" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 5 - prof Zico H...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=676989" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 5 - E11A - prof...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676990" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios TDD Basico</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676991" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicio en clase Calculadora</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676992" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Otra Calculadora</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=718660" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Enunciado Práctica 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=718661" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entrega Práctica 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=720376" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Proyecto Reto PC1</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=720377" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entrega Reto Practica 1</option>
+   </optgroup>   <optgroup label="Tema 7">   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676995" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Desarrollados en Clase R21E</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676996" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios TDD MayorMenor</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676997" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=676998" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=676999" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Material adicional arreglos y cadenas</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677000" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Desarrollados en Clase</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677001" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Desarrollo PC03 Martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677002" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado y Archivos PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677003" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica Calificada Miércoles PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677004" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado y Archivos PC03 R21E)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677007" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Caso 1: "Planilla Construcción" - parte 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677008" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Caso 1: "Planilla Construcción" - parte 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677009" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Caso 1: "Planilla Construcción" - parte 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677010" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Caso 2: "Codificador"</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677011" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios para desarrollar</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677012" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios con puntaje relativo por dificultad</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677013" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Resolución de Ejercicios y PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677014" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Guión del Alumno - Examen Final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677016" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677017" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(PC03_FP-2012_M1-1-Blended)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677018" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Arreglos/Matrices)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677019" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas sobre Arreglos)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677020" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Resultos en el taller del dia sabado)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677022" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios arreglos clase martes 03/04)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677024" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677025" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica Nro.3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677027" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de consultas sobre arreglos A11 B prof Daniel...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677028" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas sobre test y arreglos  - Profesor Robert...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677029" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Tarea Final - Profesor Roberto Montero</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677030" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Foro de Dudas y Consultas - Semana 6 - E11A - prof...)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677032" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC03 B11A prof Daniel Subauste)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677033" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado y materiales PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677034" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Trabajo puntos extras PC03)</option>
+   </optgroup>   <optgroup label="Tema 8">   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677036" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicio Cajero)</option>
+   <option value="http://moodle.upc.edu.pe/mod/chat/view.php?id=677037" style="background-image: url(http://moodle.upc.edu.pe/mod/chat/icon.gif);">(Reunión de acompañamiento 1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677038" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Ejercicios en Clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677039" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejemplo arreglo)</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677040" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">(Consultas para el examen final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/chat/view.php?id=677041" style="background-image: url(http://moodle.upc.edu.pe/mod/chat/icon.gif);">(Consultas para el final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677042" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Simulacro de Examen Final 2012-0)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677043" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Simulacro Examen Final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677044" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Solucionario Simulacro)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677045" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Simulacro Examen Miércoles)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677046" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(2011-2-M2-FP-EF_Monterrico)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677047" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(2011-2-M2-FP-EF_San_Miguel)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677048" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(2012-0-M1-FP-EF)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677049" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios_Final)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677050" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Desarrollo PC3 - Profesor Roberto Montero)</option>
+   </optgroup>   <optgroup label=" Prof Daniel Subauste ">   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677051" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Guía de Fundamentos de Programación</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677053" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Unidad 01 Algoritmos</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677054" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro Unidad 02 Programación</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677055" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro de Consultas - Estructuras Repetitivas.</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677056" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Foro de Consultas - Modularidad / Arreglos</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677057" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Repaso para el Final</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=712093" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entregable MTA-1</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=717127" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entregable MTA-2</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=719012" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entregable MTA-3</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=720103" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entregable MTA-4</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677059" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega MTA - 1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677060" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega MTA - 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677061" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega MTA - 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677062" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega MTA - 4)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677063" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones del MTA 4)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677065" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios para la PC01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677066" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones MTA-2 / MTA-3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677067" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios desarrollados en clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677069" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Práctica Calificada 01 Enunciado)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677070" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677071" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios para la PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=716205" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entrega PC 01 - Martes</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=715595" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Resolución PC01</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=717907" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Ejercicios para puntos adicionales )</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=718089" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto para puntos adicionales - martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=718091" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto01 - puntos adicionales Lunes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=718301" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto Final - puntos adicionales)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677077" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719745" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Enunciado PC02 - martes</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=719744" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega PC 02 - Martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719748" selected="selected" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ir a...</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719749" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Pregunta02-martes</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719134" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Enunciado PC02</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=719133" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719135" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Pregunta01</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719136" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Pregunta02</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677079" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677080" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto para puntos PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677082" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto en Clase Tienda)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677083" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677084" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677085" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios puntaje adicional)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677086" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Entrega ejercicio para puntaje adicional)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677087" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677088" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677089" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resoluciones MTA4)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677090" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 01)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677091" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto 02)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677092" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Reto en Clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677094" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Resolución PC03</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677095" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677096" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Ejercicio Puntos Adicionales PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677097" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Materiales PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677098" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677099" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolución PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677100" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Materiales Laboratorio Especial)</option>
+   <option value="http://moodle.upc.edu.pe/mod/quiz/view.php?id=677101" style="background-image: url(http://moodle.upc.edu.pe/mod/quiz/icon.gif);">(Prueba de autoevaluacion)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677102" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios PC03)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677104" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Taller de Repaso)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677105" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Archivos Taller de Repaso)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677106" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Solucionario Taller de Repaso)</option>
+   </optgroup>   <optgroup label="Tema 10">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677108" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">FORO para consultas del curso - Seccion de los Martes</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677109" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">FORO para consultas del curso - Seccion de los Mie...</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=711091" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">ejercicios 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=716199" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=716202" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Subir aqui la solucion a su practica No1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=718085" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicio 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=718273" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado PC1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=718276" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Subir aqui la solucion a su practica No1  - Villa)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719732" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Enunciado PC2</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=719733" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Subir aqui la solucion a su practica No2</option>
+   </optgroup>   <optgroup label="Tema 11">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677118" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas y Consultas Semana1</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677119" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas y Consultas semana 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677120" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas y Consultas Semana 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677121" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas y Consultas Semana 4</option>
+   </optgroup>   <optgroup label="Tema 12">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677122" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Dudas y Consultas de la Semana 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/quiz/view.php?id=677123" style="background-image: url(http://moodle.upc.edu.pe/mod/quiz/icon.gif);">(Control semana1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/quiz/view.php?id=677124" style="background-image: url(http://moodle.upc.edu.pe/mod/quiz/icon.gif);">Control 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677125" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Dudas y Consultas de la Semana 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677126" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Dudas y Consultas de la Semana 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677127" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Dudas y Consultas de la Semana 4</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677128" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Enunciado PC2</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677129" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Solucion PC2</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677130" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Dudas y Consultas de la Semana 5</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677131" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicio Adicional</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677132" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Ejercicio Adicional</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677133" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">ExamenFinalPasado</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677134" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Material del Taller adicional</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677135" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ultima Sesion</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677136" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Para Consultas sobre el Final</option>
+   </optgroup>   <optgroup label="Tema 13">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677138" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas y consultas de la semana 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677139" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas estructuras selectivas</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677140" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas Estructuras repetitivas</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677141" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">Dudas Programación Java</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677142" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolucion MTA-1. Prof Zico Herrera)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677169" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios_Semana1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677179" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios con solucion pseudocodigo</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677171" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Semana 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677148" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Repetitivas 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677159" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios repetitivas</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677173" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Solucion MTA1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677176" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Semana 3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677180" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Ejercicios Semana 4</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=719910" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Practica 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677157" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Practica 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677144" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Enunciado Practica 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677145" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolucion practica 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677146" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 1 - Horario Jueves)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677147" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica 1 - Horario Jueves - Solucion)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677149" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Repetitivas - Horario Jueves)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677150" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Java)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677151" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Java - Preguntas 1 y 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677152" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677153" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677155" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Selectivas - Horario Martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677156" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(ejercicios selectivas - martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=718043" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Practica 1</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677158" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677160" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion ejercicios repetitivas)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677161" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Java)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677162" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Java, Preg1 y 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677163" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica Martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677164" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Practica martes)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677165" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677166" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677167" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion practica 3b)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677168" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 3b)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677170" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Semana1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677172" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolucion Ejercicios Semana 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677174" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(practica 1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677175" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(practica 1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677177" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Resolucion Ejercicios Semana 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677178" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Java Resueltos en Clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677181" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion Ejercicios Semana 4)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677182" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677183" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica 2 - Parte 1)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677184" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Practica 2 - Parte 2)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677185" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios resueltos en clase)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677186" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Ejercicios Arreglos)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677187" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677188" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion practica 3)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677189" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Solucion MTA1</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677190" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Resolucion MTA 2</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677193" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Resolucion MTA3</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677191" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677192" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Resolucion MTA4</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677194" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Ejercicios Clase 27 noviembre)</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677195" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">(Practica Hoy)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677196" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(Solucion practica hoy)</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677197" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">(P3)</option>
+   </optgroup>   <optgroup label="Tema 14">   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677198" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">DUDAS Y CONSULTAS SEMANA 1 - SEDE VILLA - W11A - P...</option>
+   <option value="http://moodle.upc.edu.pe/mod/forum/view.php?id=677199" style="background-image: url(http://moodle.upc.edu.pe/mod/forum/icon.gif);">DUDAS Y CONSULTAS SEMANA 1 - SEDE VILLA - W12A</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=720303" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">PC2</option>
+   </optgroup>   <optgroup label="Tema 16">   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677201" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">PC2 del horario R21B</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677202" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">MTA3 del Profesor Jose Diaz Diaz</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677203" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">PC3 del profesor Jose Diaz</option>
+   <option value="http://moodle.upc.edu.pe/mod/resource/view.php?id=677204" style="background-image: url(http://moodle.upc.edu.pe/mod/resource/icon.gif);">Proyecto para la PC3</option>
+   <option value="http://moodle.upc.edu.pe/mod/assignment/view.php?id=677205" style="background-image: url(http://moodle.upc.edu.pe/mod/assignment/icon.gif);">Entrega de PC3 del horario R21B</option>
+    </optgroup></select><input type="hidden" name="sesskey" value="SbmXSHqTQs" /><div id="noscriptnavmenupopup" style="display: inline;"><input type="submit" value="Ir" /></div><script type="text/javascript">
+//<![CDATA[
+document.getElementById("noscriptnavmenupopup").style.display = "none";
+//]]>
+</script></div></form></li><li>
+<form action="http://moodle.upc.edu.pe/mod/resource/view.php"  onclick="this.target='_top';">
+<div>
+<input type="hidden" name="id" value="719749" />
+<button type="submit" title="Actividad siguiente"><span class="accesshide " >Actividad siguiente&nbsp;</span><span class="arrow ">&#x25BA;</span>
+</button>
+</div>
+</form>
+</li>
+</ul>
+</div></div>
+					<!--<p><p>DANIEL ALEJANDRO SUBAUSTE OLIDEN</p>					
+					<p><a href="http://moodle.upc.edu.pe/user/view.php?id=?74672">Ver Perfil</a></p>
+					<p><a href="http://moodle.upc.edu.pe/login/logout.php">Salir</a></p>-->
+				</div>
+				<div id="userimg">
+					<img src="http://moodle.upc.edu.pe/user/pix.php?file=/74672/f1.jpg" title="DANIEL ALEJANDRO SUBAUSTE OLIDEN" alt="DANIEL ALEJANDRO SUBAUSTE OLIDEN" />
+				</div>				
+			</div>
+        </div>
+    </div>    <div class="navbar clearfix">
+		<div id="innerNavbar">
+			<div class="breadcrumb"><h2 class="accesshide " >Usted está aquí</h2><ul>
+<li class="first">
+<a  onclick="this.target='_top'" href="http://moodle.upc.edu.pe/">aulavirtual</a>
+</li>
+<li class="first"> <span class="accesshide " >/&nbsp;</span><span class="arrow sep">&#x25BA;</span> 
+<a  onclick="this.target='_top'" href="http://moodle.upc.edu.pe/course/view.php?id=14824">IS147-Fundament</a>
+</li>
+<li class="first"> <span class="accesshide " >/&nbsp;</span><span class="arrow sep">&#x25BA;</span> 
+<a  onclick="this.target='_top'" href="index.php?id=14824">Recursos</a>
+</li>
+<li class="first"> <span class="accesshide " >/&nbsp;</span><span class="arrow sep">&#x25BA;</span>  Pregunta01-martes</li>
+</ul>
+</div>
+			<div class="navbutton"><form  method="get" action="http://moodle.upc.edu.pe/course/mod.php" onsubmit="this.target='_top'; return true"><div><input type="hidden" name="update" value="719748" /><input type="hidden" name="return" value="true" /><input type="hidden" name="sesskey" value="SbmXSHqTQs" /><input type="submit" value="Actualizar Recurso" /></div></form></div>
+		</div>
+    </div>
+    <!-- END OF HEADER -->
+    <div id="content_outside">		<div id="content">
+<script type="text/javascript">
+<!--
+openpopup('/mod/resource/view.php?inpopup=true&id=719748','resource493764','resizable=1,scrollbars=1,directories=1,location=1,menubar=1,toolbar=1,status=1,width=620,height=450');
+
+-->
+</script><div class="popupnotice">Este recurso debe aparecer en una ventana emergente<br />Si no, haga clic aquí: <a href="http://moodle.upc.edu.pe/mod/resource/view.php?inpopup=true&amp;id=719748" onclick="this.target='resource493764'; return openpopup('/mod/resource/view.php?inpopup=true&amp;id=719748', 'resource493764','resizable=1,scrollbars=1,directories=1,location=1,menubar=1,toolbar=1,status=1,width=620,height=450');">Pregunta01-martes</a></div></div><div id="footer">	
+			<div id="terms">
+			<p>Prolongaci&oacute;n Primavera 2390, Monterrico | Telf: 511-313-3333 | Fax: 511-313-3344 | webmaster</p>
+			<p class="politics"><a href="http://www.upc.edu.pe/html/politica-y-terminos/0/politica-privacidad.htm" target="_blank">Pol&iacute;tica de Privacidad</a> | <a href="http://www.upc.edu.pe/html/politica-y-terminos/0/terminos-condiciones.htm" target="_blank">T&eacute;rminos y Condiciones</a></p>
+		</div>
+	
+    
+</div></div>
+</div>
+</body>
+</html>
