@@ -1,0 +1,130 @@
+=begin
+
+Pregunta 1 (5 puntos)
+
+Un ingeniero está cansado de realizar los mismos cálculos y se le ocurrió pedirle a usted que realice un algoritmo que le permita ingresar los valores A,B.C y le permita obtener el resultado expresado por las siguientes fórmulas:
+
+A ← 4 + (((24 residuo 5)^2+6)/3);
+B ← A * (32 cociente 3 * 15);
+C ← C + (B + 10*(A/2 + 15) / 3^3) + 2*(B+A) + 9*B
+A ← C - A
+B ← A + C
+Resultado = A + B + C
+
+
+Pregunta 2 (5 puntos)
+
+Define un algoritmo que me permita encontrar el resultado de la siguiente fórmula lógica
+
+((A == C) Y (B > D)) O (((A!= E) Y (C < E) O (E < A)) Y (B <> C))
+
+Pregunta 3 (10 puntos)
+
+Los directivos de una empresa de software tras analizar el estado financiero se dan cuenta que el año 2013 fue muy bueno y deciden tomar 2 decisiones importantes con respecto a las utilidades obtenidas; 
+
+La primera decisión es invertir en infraestructura y la segunda es repartir parte de las utilidades a sus trabajadores. 
+
+La forma en la cual se va a distribuir dicho dinero es la siguiente:
+
+Infraestructura
+Se invertirá el 60% de las utilidades obtenidas en mejorar la infraestructura del local en donde actualmente la empresa viene desarrollando sus actividades. 
+
+La empresa desea comprar lo siguiente:
+1. Aire acondicionado (5000 soles)
+2. 5 macs (25000 soles)
+3. Y lo que sobre en ipads (1000 soles cada uno)
+
+Repartición de utilidades
+Se les dará el restante del dinero (40%) a los trabajadores.
+
+
+A resolver:
+1. Obtener cuanto dinero se va a repartir en infraestructura o Utilidades
+2. Obtener el dinero que se va a gastar en Ipads
+3. Obtener el número de ipads a repartir
+
+
+
+
+=end
+
+def calculoGenerico(a,b,c)  
+  a = 4 + (((24 % 5) ** 2 + 6) / 3)
+  b = a * (32 / 3 * 15)
+  c = c + (b + 10 * ( a / 2.0 + 15) / 3 ** 3)+ 2 * (b + a) + 9 * b
+  a = c - a
+  b = a + c
+  return (a + b + c).round(2)
+end
+
+def calculoLogico(a,b,c,d,e)
+  return ((a == c) && (b > d)) || (((a != e) && (c < e) || (e < a)) && (b != c))
+end
+
+def calcularPorcentajeARepartir(entidad, utilidad)
+   if entidad == "infraestructura"
+     return utilidad * 0.6
+   else 
+     return utilidad * 0.4
+   end   
+end
+
+def montoARepartirEnIpads(utilidad)
+  monto = utilidad * 0.6 - 30000
+  if monto <= 0
+    return 0
+  else
+    return monto
+  end
+end
+
+def calcularIpads(utilidad)
+  monto = montoARepartirEnIpads(utilidad)
+  return monto / 1000
+end
+
+
+
+#CODIGO TEST (NO CAMBIAR)
+
+# valida el valor esperado vs en valor que está generando nuestro algoritmo
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+# Programa inicial llamado para hacer testing
+def test
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_pregunta01
+  puts " "
+  test_pregunta02
+  puts " "
+  test_pregunta03
+  puts " "
+end
+
+# Zona de test
+def test_pregunta01
+    print validate(79336.37,calculoGenerico(1,5,10))
+    print validate(81104.37,calculoGenerico(100,541,452))
+    print validate(79436.37,calculoGenerico(100,20,35))   
+end
+
+def test_pregunta02
+    print validate(true,calculoLogico(1,5,10,12,15))
+    print validate(false,calculoLogico(15,50,2,1,15))
+    print validate(true,calculoLogico(10,50,1,2,15))
+
+end
+
+def test_pregunta03
+    print validate(180000,calcularPorcentajeARepartir("infraestructura",300000))
+    print validate(4000,calcularPorcentajeARepartir("utilidades",10000))
+    print validate(150000,montoARepartirEnIpads(300000))
+    print validate(0,montoARepartirEnIpads(10000))
+    print validate(150, calcularIpads(300000))
+    print validate(0, calcularIpads(10000))
+end
+
+test
