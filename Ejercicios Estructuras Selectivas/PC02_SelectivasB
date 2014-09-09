@@ -1,0 +1,75 @@
+#encoding:UTF-8
+=begin
+Pregunta 1
+
+Una empresa desea calcular los puntos de bonificación para los alumnos de la maestría en la nota final. 
+
+Para ello el alumno tiene una nota base que es el cálculo de tres de sus notas
+
+Un examen parcial que tiene peso 2
+Una promedio de prácticas que tiene peso 1
+Un examen final que tiene peso 3
+
+El promedio final se calcula de la siguiente manera
+
+PF = (PP * 1 + EP * 2 + EF *3 )/6
+
+Luego se requiere aplicar la bonificación que va del siguiente modo
+
+Los alumnos que han tenido una participación de calificación A reciben 10% de bonificación sobre su nota, los alumnos que tienen B 8% y los alumnos que tienen C 6%  (trabajar todo con 2 decimales)
+
+
+
+=end
+def calcularPromedio(pp, ep, ef)
+  return ((pp + ep * 2 + ef * 3)/6.0).round(2)
+end
+
+def calcularBonificacion(pp, ep, ef, participacion)
+  promedio = calcularPromedio(pp, ep, ef)
+  if participacion == 'A'
+     bono = promedio * 0.1
+  elsif participacion == 'B'
+     bono = promedio * 0.08
+  else
+     bono = promedio * 0.06
+  end
+  return promedio + bono
+end
+
+puts "Ingrese el promedio prácticas"
+pp = gets.to_f
+puts "Ingrese el examen parcial"
+ep = gets.to_f
+puts "Ingrese el examen final"
+ef = gets.to_f
+puts "El promedio es: " + calcularPromedio(pp, ep, ef).to_s
+
+#--- zona de test ----
+
+def test_calcularPromedio
+    print validate(15, calcularPromedio(15,15,15))
+    print validate(6.67, calcularPromedio(20,10,0))
+
+end
+
+def test_calcularBonificacion
+    print validate(11.0, calcularBonificacion(10, 10, 10, 'A')) 
+    print validate(14.31, calcularBonificacion(12.5, 15.5, 12, 'B')) 
+    print validate(15.9, calcularBonificacion(15, 15, 15, 'C')) 
+
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_calcularPromedio
+  test_calcularBonificacion
+  puts " "
+end
+test
