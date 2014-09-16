@@ -1,0 +1,79 @@
+=begin
+Pregunta 1 Solucionario PC02 2014-2-M1
+
+Una empresa desea calcular el sueldo de sus trabajadores
+
+Para ello se toma en cuenta las ventas realizadas por ellos. 
+
+Ventas / Tipo			A		B
+Desde 0 hasta 1199		10%		12%
+Entre 1200 y 5000		12%		25%
+Más de 5000				15%		30%
+
+Desarrollar un subprograma que permita calcular el porcentaje del bono y otro subprograma que permita calcular el sueldo con el bono del trabajador
+
+
+=end
+def porcentaje_bono(ventas, tipo)
+ if tipo == 'A'
+	case ventas
+		when 0..1199
+		  return 0.1
+		when 1200..5000
+		  return 0.12
+		else
+		  return 0.15
+	end
+ else
+   case ventas
+		when 0..1199
+		  return 0.12
+		when 1200..5000
+		  return 0.25
+		else
+		  return 0.30
+	end
+ end
+end
+
+def bono(ventas, tipo, sueldo)
+  porcentaje = porcentaje_bono(ventas, tipo)
+  return sueldo + (sueldo * porcentaje)
+end
+
+
+
+#--- zona de test ----
+
+def test_porcentaje_bono
+    print validate(0.1, porcentaje_bono(300,'A'))
+    print validate(0.25, porcentaje_bono(1500, 'B'))
+    print validate(0.15, porcentaje_bono(6000, 'A'))
+    print validate(0.3, porcentaje_bono(6000, 'B'))
+    print validate(0.12, porcentaje_bono(1200, 'A'))
+
+end
+
+def test_bono
+    print validate(1100.0, bono(300,'A',1000.0)) 
+    print validate(6250.0, bono(1500, 'B',5000.0)) 
+    print validate(10080.0, bono(1200, 'A', 9000.0)) 
+    print validate(1300.0, bono(6000, 'B',1000.0)) 
+    print validate(896.0, bono(920, 'B', 800.0)) 
+
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_porcentaje_bono
+  puts ""
+  test_bono
+  puts " "
+end
+test
