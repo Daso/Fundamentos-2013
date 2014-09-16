@@ -1,0 +1,17 @@
+#Desarrollar un programa que permita definir 
+#la nota de un alumno. En caso sea menor a 11
+#estará reprobado. En caso de tener desde 17 a 
+#más tendrá excelencia. En otro caso estará 
+#símplemente aprobado
+def evaluador(nota)
+  case nota
+	when 0..10
+	  return "reprobado"
+	when 11..16
+	  return "aprobado"
+	else
+	  return "aprobado excelencia"
+	end
+end
+puts evaluador(9)
+
