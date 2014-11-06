@@ -3,14 +3,10 @@ Ejercicio 06: Desarrollar un programa que me permita ingresar un monto
 y me permita mostrar en qué billetes puedo entregarlo priorizando los 
 de mayor valor tomando en cuenta que los billetes de mayor denominación 
 tienen prioridad. Los billetes son de 50, 20, 5 y 1
-
 Ejemplo:
-
 Monto = 127
-
 La salida será 
 2 billetes de 50, 1 billete de 20, 1 billete de 5, 2 billetes de 1
-
 =end
 
 def billetes(monto)
@@ -22,7 +18,6 @@ def billetes(monto)
   monto = monto % 5
   monto = monto 
   billetes1 = monto
-  puts billetes50.to_s + " billetes de 50, " + billetes20.to_s +  " billetes de 20, " + billetes5.to_s + " billetes de 5, " + billetes1.to_s + " billetes de 1"  
   return billetes50.to_s + " billetes de 50, " + billetes20.to_s +  " billetes de 20, " + billetes5.to_s + " billetes de 5, " + billetes1.to_s + " billetes de 1"  
 end
 
@@ -30,6 +25,7 @@ end
 def test_determinarcuota
     print validate("2 billetes de 50, 1 billetes de 20, 1 billetes de 5, 2 billetes de 1", billetes(127))
     print validate("6 billetes de 50, 1 billetes de 20, 0 billetes de 5, 2 billetes de 1", billetes(322))
+	print validate("3 billetes de 50, 2 billetes de 20, 0 billetes de 5, 3 billetes de 1", billetes(193))
 end
 
 def validate (expected, value)
