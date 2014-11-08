@@ -24,7 +24,12 @@ siendo 3, 6 y 12 meses con precios de 4,000
 En el caso de Barman depende de la duración
 siendo 3, 6 y 12 meses con precios de 3,000
 5,000 y 8,500 respectivamente 
- 
+
+Los porcentajes son los siguientes
+En el caso de Cocina 5%
+En el caso de Repostería 7%
+en el caso de Barman 3%
+
 =end
 def calcularPrecioCurso(carrera, duracion)
   case carrera
