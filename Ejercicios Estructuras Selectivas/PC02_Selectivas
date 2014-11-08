@@ -6,7 +6,7 @@ Un ingeniero está cansado de realizar los mismos cálculos y se le ocurrió ped
 
 A ← 4 + (((24 residuo 5)^2+6)/3);
 B ← A * (32 cociente 3 * 15);
-C ← C + (B + 10*(A/2 + 15) / 3^3) + 2*(B+A) + 9*B
+C ← C + (B + 10*(A/2.0 + 15) / 3^3) + 2*(B+A) + 9*B
 A ← C - A
 B ← A + C
 Resultado = A + B + C
