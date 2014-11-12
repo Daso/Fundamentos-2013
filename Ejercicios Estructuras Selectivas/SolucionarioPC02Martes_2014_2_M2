@@ -1,0 +1,155 @@
+=begin
+ESTUDIOS PROFESIONALES PARA EJECUTIVOS
+
+FUNDAMENTOS DE PROGRAMACION (IS147)
+Práctica Calificada No 2
+Ciclo 2014-2-M2
+
+Profesor	: Daniel Subauste, Roberto Montero, Zico Herrera,Giancarlo Corzo, Johnny Rodriguez
+Tiempo	: 45 minutos
+Sección	: Todas
+
+
+
+PRÁCTICA (45 minutos)							(10 puntos)
+Indicaciones:
+●	No se permite el uso de material de consulta.
+●	Se descontarán puntos por lógica y sintaxis incorrectas.
+●	Al finalizar el tiempo indicado en la pizarra se deberá subir inmediatamente la respuesta al aula virtual. El aula virtual se cierra automáticamente y quien no suba su respuesta tendrá 0 de nota sin lugar a reclamo.
+●	El sistema monitorea constantemente la actividad en las computadoras. Cualquier acto de copia será sancionado y elevado al tribunal de honor de la universidad.
+
+Pregunta 1 
+
+Una reconocida Universidad requiere un programa que le permita calcular el pago mensual de la nómina de sus docentes. Para el cálculo se debe tener en cuenta lo siguiente:
+
+1.	La tarifa por hora trabajada va de acuerdo con el grado de instrucción alcanzado por el docente.
+2.	Al total obtenido al multiplicar la cantidad de horas trabajadas al mes con su respectiva tarifa, la Universidad aplicará un % de aumento por antigüedad.
+
+Las tarifas y el porcentaje son los indicados en el siguiente cuadro.
+
+Grado de Instrucción	Tarifa x hora
+Bachiller	S/. 40
+Titulado	S/. 54
+Maestría	S/. 72
+Doctorado	S/. 100
+
+Años de antigüedad	% de aumento
+Más de 10 años	10%
+Entre 6 y 10 años	7%
+Entre 3 y 5 años 	5%
+Menos de 3 años	3%
+
+Además, la Universidad aplica un bono por puntualidad en la asistencia a las sesiones de clase. Los minutos de tardanza corresponden a la suma de los minutos de retraso de todas las sesiones del mes. De esta manera, el bono se aplica cumpliendo las siguientes condiciones:
+
+Minutos de tardanza	Bono
+0 minutos	S/. 120
+Entre 1 y 5 minutos	S/. 80
+Entre 6 y 10 minutos	S/. 40
+Entre 11 y 15 minutos	S/. 0
+Más de 16 minutos	S/. -40
+Desarrollar un subprograma que permita determinar lo siguiente:
+
+•	Tarifa x hora de un docente.
+•	Porcentaje de aumento según la antigüedad del docente.
+•	Bono por puntualidad en la asistencia.
+•	Total a pagar a un docente en el mes. 
+
+Monterrico,  11 de Noviembre de 2014
+
+=end
+
+#encoding:UTF-8
+def tarifaPorHora(gradoInstruccion)
+ case gradoInstruccion
+  when "Bachiller"
+   return 40
+  when "Titulado"
+   return 54
+  when "Maestria"
+   return 72
+  else 
+   return 100
+ end  
+end
+
+def porcentajeAumento(antigDocente)
+  case antigDocente
+    when 0..2
+	  return 0.03
+	when 3..5
+	  return 0.05
+    when 6..10
+	  return 0.07
+    else
+	  return 0.1
+  end	
+end
+
+def calcularBono(minutosTardanza)
+   case minutosTardanza
+    when 0
+	  return 120
+	when 1..5
+	  return 80
+    when 6..10
+	  return 40
+	when 11..15
+	  return 0
+    else
+	  return -40
+  end		
+end
+
+def totalPagar(totalHorasMes,gradoInstruccion,antigDocente,minutosTardanza)
+  tarifa_hora = tarifaPorHora(gradoInstruccion)
+  porcentaje_aumento = porcentajeAumento(antigDocente)
+  bono = calcularBono(minutosTardanza)
+  total_pagar = (totalHorasMes * tarifa_hora * ( 1-porcentaje_aumento) + bono)
+  return total_pagar.round(2)
+ 
+end
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+def test_tarifaPorHora
+    print validate(40,tarifaPorHora("Bachiller"))
+    print validate(54,tarifaPorHora("Titulado"))
+    print validate(72,tarifaPorHora("Maestria"))
+	print validate(100,tarifaPorHora("Doctorado"))
+end
+
+def test_porcentajeAumento
+    print validate(0.1,porcentajeAumento(12))
+    print validate(0.07,porcentajeAumento(8))
+    print validate(0.05,porcentajeAumento(4))
+	print validate(0.03,porcentajeAumento(2))
+end
+
+def test_calcularBono
+    print validate(120,calcularBono(0))
+    print validate(80,calcularBono(3))
+    print validate(40,calcularBono(9))
+	print validate(0,calcularBono(14))
+	print validate(-40,calcularBono(23))
+end
+
+def test_totalPagar
+    print validate(4660.24,totalPagar(92,"Titulado",8,9))
+    print validate(5865.6,totalPagar(84,"Maestria",4,0))
+    print validate(6980.0,totalPagar(78,"Doctorado",14,25))
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_tarifaPorHora
+  test_porcentajeAumento
+  test_calcularBono
+  test_totalPagar
+  puts " "
+end
+test
