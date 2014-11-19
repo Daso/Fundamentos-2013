@@ -1,6 +1,10 @@
-letra = 'a'
-while(letra != 'z') do
-  puts "Ingrese la letra"
-  letra = gets.chomp	
+#encoding : UTF-8
+caracter = " "
+contador = 0
+while caracter != 'a'
+  puts "Presione una tecla"
+  caracter = gets.chomp
+  contador +=  1
 end
-puts "Gracias! ingresaste z"
+puts "Presionó " + contador.to_s + " teclas"
+puts "FIN" 
