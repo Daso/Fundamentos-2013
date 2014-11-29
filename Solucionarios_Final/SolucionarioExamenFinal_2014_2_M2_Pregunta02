@@ -1,0 +1,102 @@
+=begin
+El colegio “TRENKE” aplica un sistema de evaluación particular a sus 
+alumnos donde la evaluación se hace de forma constante en cada 
+sesión de clase. Para ello, al finalizar cada sesión de clase el 
+profesor tomará una evaluación de los temas vistos en dicha sesión y
+ de una duración máxima de veinte minutos. Si el alumno faltara a 
+ dicha sesión su nota para esa evaluación será de cero (0).
+De acuerdo a ello se ha determinado que el alumno rendirá 13 pruebas 
+que equivalen a las trece semanas de clase. Por ello, se le solicita 
+lo siguiente:
+
+a)	Desarrollar un subprograma que teniendo como base las 13 notas de 
+un alumno, nos retorne el promedio final obtenido. El promedio final 
+se calculará tomando las 10 mejores notas obtenidas durante las 13 
+sesiones que tiene el curso, no se toman las 3 menores.
+b)	Desarrollar un subprograma reciba las notas promedio final de todos 
+los alumnos y determine quién fue el mejor alumno de la clase.
+c)	Desarrollar un subprograma que reciba las notas promedio final de 
+los alumnos y determine el promedio de todo el salón.
+
+=end
+def calcular_promedio_alumno(notas)
+  total = 0
+  mejores_notas = notas.sort.reverse
+  for i in 0..9
+    total = total + mejores_notas[i]
+  end
+  return (total / 10).round(2)
+end
+
+def determinar_mejor_alumno(promedios,alumnos)
+  indice_mayor = 0
+  mayor_nota = promedios[0]
+  for i in 0...promedios.length
+    if promedios[i] > mayor_nota
+	  mayor_nota = promedios[i]
+	  indice_mayor = i
+	end  
+  end
+  return alumnos[indice_mayor]
+end
+
+def calcular_promedio_salon(promedios)
+  total = 0
+  for i in 0...promedios.length
+    total = total + promedios[i]
+  end
+  return (total / promedios.length).round(2)
+end
+
+
+#--- zona de test ----
+
+def test_calcularpromedioalumno
+	notas1=[11.00, 12.00, 16.00, 18.00, 5.00, 13.00, 15.00, 11.00, 7.00, 12.00, 17.00, 2.00, 11.00]
+	notas2=[15.00, 13.00, 12.00, 17.00, 15.00, 3.00, 16.00, 10.00, 8.00, 20.00, 16.00, 12.00, 15.00]	
+	notas3=[13.00, 10.00, 14.00, 15.00, 13.00, 11.00, 17.00, 9.00, 5.00, 15.00, 13.00, 18.00, 13.00]	
+
+	print validate(13.60, calcular_promedio_alumno(notas1)) 
+	print validate(15.10, calcular_promedio_alumno(notas2)) 
+	print validate(14.20, calcular_promedio_alumno(notas3)) 
+end
+
+def test_determinarmejoralumno
+	promedios1=[11.00, 12.00, 16.00, 18.00, 5.00, 13.00, 15.00, 11.00, 7.00]
+	promedios2=[15.00, 19.00, 12.00, 17.00, 15.00, 3.00, 16.00, 10.00, 8.00]	
+	promedios3=[13.00, 10.00, 14.00, 15.00, 13.00, 11.00, 17.00, 9.00, 5.00]	
+
+	alumnos=["Jose","Lorena", "Cecilia", "Diana","Alfredo","Myna","Pedro","Esteban","Karla"]		
+	
+    print validate("Diana",determinar_mejor_alumno(promedios1,alumnos)) 
+    print validate("Lorena",determinar_mejor_alumno(promedios2,alumnos)) 
+    print validate("Pedro",determinar_mejor_alumno(promedios3,alumnos)) 
+end
+
+def test_calcularpromediosalon
+	promedios1=[11.00, 12.00, 16.00, 18.00, 5.00, 13.00, 15.00, 11.00, 7.00, 12.00, 17.00, 2.00, 11.00]
+	promedios2=[15.00, 13.00, 12.00, 17.00, 15.00, 3.00, 16.00, 10.00, 8.00, 20.00, 16.00, 12.00, 15.00]	
+	promedios3=[13.00, 10.00, 14.00, 15.00, 13.00, 11.00, 17.00, 9.00, 5.00, 15.00, 13.00, 18.00, 13.00]	
+    print validate(11.54, calcular_promedio_salon(promedios1)) 
+    print validate(13.23, calcular_promedio_salon(promedios2)) 
+    print validate(12.77, calcular_promedio_salon(promedios3)) 
+end
+
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+ 
+  
+  puts "Test de prueba del programa - pregunta 2"
+  puts "----------------------------------------"
+  test_calcularpromediosalon
+  puts " "
+  test_calcularpromedioalumno
+  puts " "
+  test_determinarmejoralumno
+  puts " "
+end
+test
