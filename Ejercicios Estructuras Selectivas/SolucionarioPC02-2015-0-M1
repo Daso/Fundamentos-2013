@@ -1,0 +1,118 @@
+#encoding:UTF-8
+=begin
+Pregunta 1 
+En una universidad se está llevando a cabo un estudio para determinar 
+el grado de aprobación que existe entre los alumnos de las diferentes 
+carreras. Existe una pregunta de investigación en la cual se debe tomar
+ en cuenta que dependiendo de la carrera, se quiere probar cómo 
+ reaccionarían los alumnos si las notas son incrementadas de acuerdo 
+ a unas escalas establecidas.
+
+Para el estudio se han tomado en cuenta tres cursos de una carrera 
+profesional. Cada curso tiene diferentes fórmulas de calificación 
+que son las siguientes:
+
+Nombre del curso	Fórmula de la nota final
+curso1	PC1 * 25% + PC2 * 35% + EF * 40%
+curso2	PC1 * 35% + PC2 * 35% + EF * 30%
+curso3	PC1 * 15% + PC2 * 25% + EF * 60%
+
+Dónde: PC1= nota de la práctica calificada No1
+ 	 PC2= nota de la práctica calificada No2
+	 EF  = nota del examen final.
+
+
+
+
+
+La tabla de incrementos es la siguiente:
+
+NOTA ORIGINAL	INCREMENTO
+Hasta 9				10%
+Desde 09 hasta 14	15%
+14, 15				20%
+16					25%
+17 a 20				Poner nota 20
+
+Se le solicita a usted lo siguiente:
+a)	Desarrollar un subprograma que determine la nota del alumno
+b)	Desarrollar un subprograma que determine la nota con el incremento
+c)	Desarrollar un subprograma que calcule la nota final del alumno
+
+
+
+=end
+def calcularnotafinal(curso,notapc1,notapc2,notaef)
+  case curso
+   when "curso1"
+     return notapc1 * 0.25 + notapc2 * 0.35 + notaef * 0.4
+   when "curso2"
+     return notapc1 * 0.35 + notapc2 * 0.35 + notaef * 0.3 
+   when "curso3"
+     return notapc1 * 0.15 + notapc2 * 0.25 + notaef * 0.6
+  end
+end
+
+def calcularnuevanota(nota)
+  if nota >= 0 && nota < 9
+    return nota + nota * 0.1
+  elsif nota >= 9 && nota < 14
+    return nota + nota * 0.15
+  elsif nota >= 14 && nota <= 15
+    return nota + nota * 0.20
+  elsif nota == 16
+    return nota + nota * 0.25
+  else
+    return 20.00
+  end
+end
+
+def calcularnotaalumno(curso,notapc1,notapc2,notaef)	
+	nota = calcularnotafinal(curso,notapc1,notapc2,notaef)
+	return calcularnuevanota(nota)
+end
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+def test_calcularnotafinal
+    print validate(14.30,calcularnotafinal("curso1",14,16,13))
+    print validate(10.10,calcularnotafinal("curso2",11,05,15))
+    print validate(8.50,calcularnotafinal("curso3",05,07,10))
+    print validate(15.00,calcularnotafinal("curso1",15,15,15))
+    print validate(16.00,calcularnotafinal("curso2",16,16,16))
+    print validate(19.20,calcularnotafinal("curso3",18,18,20))
+end
+
+def test_calcularnuevanota
+    print validate(17.16,calcularnuevanota(14.30))
+    print validate(11.50,calcularnuevanota(10.00))
+    print validate(10.35,calcularnuevanota(9.00))
+    print validate(18.00,calcularnuevanota(15.00))
+    print validate(20.00,calcularnuevanota(16.00))
+    print validate(20.00,calcularnuevanota(19.20))
+end
+
+def test_calcularnotaalumno
+    print validate(17.16,calcularnotaalumno("curso1",14,16,13))
+    print validate(11.50,calcularnotaalumno("curso2",10,10,10))
+    print validate(10.35,calcularnotaalumno("curso3",9,9,9))
+    print validate(18.00,calcularnotaalumno("curso1",15,15,15))
+    print validate(20.00,calcularnotaalumno("curso2",16,16,16))
+    print validate(20.00,calcularnotaalumno("curso3",18,18,20))
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_calcularnotafinal
+  puts " "
+  test_calcularnuevanota
+  puts " "
+  test_calcularnotaalumno
+  puts " "
+end
+test
