@@ -1,0 +1,116 @@
+#encoding:UTF-8
+=begin 
+Pregunta 1 
+
+Una avícola quiere lanzar un programa a ser utilizado por sus clientes. El fin de dicho programa es con la finalidad de que el cliente pueda programar sus pedidos y saber exactamente cuánto es lo que tiene que pagar por las compras que vaya a realizar y cual será el peso total de la carga.
+
+Para esto, la empresa dispone de una serie de datos que son mostrados a continuación: 
+
+Tipo de Ave Precio por Kilo
+Macho S/.4.10
+Hembra  S/.4.50
+Brasa S/.3.90
+
+Al momento en el que se hace la entrega de los productos, estos son entregados en Jabas, las cuales dependiendo del color tienen los siguientes pesos
+
+Tipo de Jaba  Peso
+Verde 200 gramos
+Azul  220 gramos
+Rojo  210 gramos
+
+Se sabe que en cada jaba puede albergar como máximo 8 pollos.
+
+Finalmente se sabe los pesos promedio de las aves es el siguiente:
+
+Tipo de Ave Peso Kilos del ave
+Macho 3.25 kilos
+Hembra  3.18 kilos
+Brasa 3.40 kilos
+
+
+Se pide realizar los siguientes subprogramas:
+
+1) Desarrollar un subprograma que permita determinar el precio a pagar por un tipo de producto. Se considera como datos de entrada el tipo de producto y la cantidad.
+
+2) Desarrollar un subprograma que indique cual es el peso por las jabas que tendrá que considerarse (en kilos) al momento del despacho de un pedido. Se considera como datos de entrada la cantidad de pollos a comprar así como el color de la jaba a utilizar.
+
+3) Desarrollar un subprograma que permita determinar cuál es el peso total (en Kilos). Se considera como datos de entrada la cantidad de pollos machos, hembras y brasa a comprar así como el color de jaba a utilizar. Se sabe que en las jabas no pueden combinarse productos distintos.
+
+=end
+def precioPagarPedido(tipoProducto, cantidad)
+  case tipoProducto
+  when "Macho"
+    peso = 3.25
+    precio_por_kilo = 4.10
+  when "Hembra"
+    peso = 3.18
+    precio_por_kilo = 4.50
+  else
+    peso = 3.40
+    precio_por_kilo = 3.90  
+  end
+  kilos_totales = cantidad * peso
+  precio = kilos_totales * precio_por_kilo	
+end
+
+def obtenerPesoJabas(color, pollos)
+	jabas = (pollos / 8.0).ceil
+  case color
+  when "Verde"
+    peso = 0.2
+  when "Azul"
+    peso = 0.22
+  else
+    peso = 0.21
+  end
+  jabas * peso  
+end
+
+def calcularPesoTotal(machos, hembras, brasa, color)
+  peso_aves = machos * 3.25 + hembras * 3.18 + brasa * 3.40
+  peso_jabas = obtenerPesoJabas(color, machos) + obtenerPesoJabas(color, hembras) + obtenerPesoJabas(color, brasa)
+	(peso_aves + peso_jabas).round(2)
+
+end
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+def test_precioPagarPedido
+
+    print validate(133.25,precioPagarPedido("Macho",10))
+    print validate(143.1,precioPagarPedido("Hembra",10))
+    print validate(132.60,precioPagarPedido("Brasa",10))
+	
+end
+
+def test_obtenerPesoJabas
+
+    print validate(0.4,obtenerPesoJabas("Verde",10))
+    print validate(0.44,obtenerPesoJabas("Azul",16))
+	print validate(0.63,obtenerPesoJabas("Rojo",17))
+    print validate(50,obtenerPesoJabas("Verde",2000))
+
+end
+
+def test_calcularPesoTotal
+    
+	print validate(198.58,calcularPesoTotal(20,20,20, "Azul"))
+    print validate(164.20,calcularPesoTotal(20,20,10, "Verde"))
+	print validate(164.28,calcularPesoTotal(20,20,10, "Rojo"))
+	
+end
+
+
+def test
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_precioPagarPedido
+  test_obtenerPesoJabas
+  test_calcularPesoTotal 
+  puts " "
+end
+
+test
