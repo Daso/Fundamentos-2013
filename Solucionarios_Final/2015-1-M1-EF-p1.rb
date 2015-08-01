@@ -18,15 +18,33 @@ Se le pide lo siguiente:
 =end
 
 def buscar_mejores_quesos(nivel,tipo_queso)
-
+  mejores = []
+  for i in 0...nivel.size
+    if nivel[i] == 5
+      mejores << tipo_queso[i]
+    end
+  end
+  mejores
 end
     
 def calcular_quesos_sobre_promedio(nivel)
- 
+  cantidad = 0
+  for i in 0...nivel.size
+    if nivel[i] > 3
+      cantidad += 1
+    end
+  end
+  cantidad * 100 / nivel.size
 end
     
 def buscar_nivel_queso_por_tipo(nivel,tipo_queso, nombre_queso)
- 
+  nivel_queso = 0
+  for i in 0...tipo_queso.size
+    if tipo_queso[i] == nombre_queso
+       nivel_queso = nivel[i]
+    end
+  end
+  nivel_queso
 end
 
 #----------Zona de Test------------------
@@ -37,14 +55,14 @@ def test_buscar_mejores_quesos
   toma1 = [5,3,5,3,2]
   toma2 = [3,2,3,5,1]
   toma3 = [1,5,3,4,5]
- 
+  
   print validate(["Parmesano", "Edam"], buscar_mejores_quesos(toma1,@tipo_queso))
   print validate(["Fresco"], buscar_mejores_quesos(toma2,@tipo_queso))
   print validate(["Gouda", "Azul"], buscar_mejores_quesos(toma3,@tipo_queso))
 end
     
 def test_calcular_quesos_sobre_promedio
-    toma1 = [5,3,5,3,2]
+	toma1 = [5,3,5,3,2]
   toma2 = [3,2,3,5,1]
   toma3 = [1,5,3,4,5]
 
@@ -81,3 +99,4 @@ def test
 end
 
 test
+
