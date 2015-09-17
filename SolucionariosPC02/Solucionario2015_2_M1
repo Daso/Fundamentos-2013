@@ -1,0 +1,122 @@
+=begin 
+Pregunta 1 
+
+La cadena de supermercados “SuperMarket” ha lanzado un programa de fidelidad denominado “Puntos Market” que consiste en otorgar puntos a sus clientes por las compras realizadas en su cadena a nivel nacional.  Cada compra se clasifica de la siguiente manera:
+
+1)  Compras tipo Normal: No incluyen licores ni electrodomésticos.
+2)  Compras tipo Plus: Incluyen licores pero no electrodomésticos.
+3)  Compras tipo Plus+: Incluyen licores y electrodomésticos.
+
+Realizar un programa que calcule el monto de puntos acumulados de un cliente por sus consumos realizados durante el mes. La cantidad de puntos se calculará de la siguiente manera:
+
+a)  Un punto por cada 10 soles de compra tipo Normal.
+b)  Dos puntos por cada 10 soles de compra tipo Plus.
+c)  Cuatro puntos por cada 10 soles de compra tipo Plus+.
+
+Además, la cadena incentiva a sus clientes a realizar compras de mayor monto ofreciendo puntos adicionales. De esta manera, según el tipo de compra y el monto de la compra se otorga un porcentaje adicional de puntos. Este porcentaje adicional se calcula a partir del monto de la compra y de la siguiente manera:
+
+Tipo de Compra  Monto de la compra  Puntos
+(Porcentaje Adicional)
+Normal  Mayor a 200 soles 5%
+        Mayor a 500 soles 10%
+Plus    Mayor a 250 soles 10%
+        Mayor a 500 soles 15%
+Plus+   Mayor a 250 soles 15%
+        Mayor a 500 soles 20%
+
+Se pide desarrollar un programa que realice lo siguiente:
+
+1)  Calcular los puntos obtenidos según el tipo y monto de la compra.
+2)  Calcular el número de puntos adicionales obtenidos por la compra.
+3)  Calcular el total de puntos obtenidos por la compra.
+
+
+=end
+#encoding:UTF-8
+
+
+def puntosObtenidos(tipoCompra,montoCompra)
+  case tipoCompra
+  when "Normal"
+    montoCompra / 10
+  when "Plus"
+    2 * (montoCompra / 10)
+  when "Plus+"
+    4 * (montoCompra / 10)
+  end
+end
+
+def puntosAdicionales(tipoCompra,montoCompra)
+ case tipoCompra
+  when "Normal"
+    if montoCompra > 500
+      montoCompra * 0.10
+    elsif montoCompra > 200
+      montoCompra * 0.05
+    else
+      0
+    end
+  when "Plus"
+     if montoCompra > 500
+      montoCompra * 0.15
+    elsif montoCompra > 250
+      montoCompra * 0.10
+    else
+      0
+    end
+  when "Plus+"
+     if montoCompra > 500
+      montoCompra * 0.20
+    elsif montoCompra > 250
+      montoCompra * 0.15
+    else
+      0
+    end
+  end
+end
+
+def totalPuntos(tipoCompra,montoCompra)
+  puntosObtenidos(tipoCompra,montoCompra) + puntosAdicionales(tipoCompra,montoCompra)
+end
+
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+def test_puntosObtenidos
+    print validate(30,puntosObtenidos("Normal",300))
+    print validate(70,puntosObtenidos("Normal",700))
+    print validate(130,puntosObtenidos("Normal",1300))    
+    print validate(640,puntosObtenidos("Plus",3200))
+    print validate(1100,puntosObtenidos("Plus",5500))    
+    print validate(1800,puntosObtenidos("Plus+",4500))
+end
+
+def test_puntosAdicionales
+    print validate(0,puntosAdicionales("Normal",180))
+    print validate(18,puntosAdicionales("Normal",360))    
+    print validate(44,puntosAdicionales("Plus",440))
+    print validate(93,puntosAdicionales("Plus",620))    
+    print validate(72,puntosAdicionales("Plus+",480))
+    print validate(168,puntosAdicionales("Plus+",840))    
+end   
+
+def test_totalPuntos
+    print validate(15,totalPuntos("Normal",150))
+    print validate(57,totalPuntos("Normal",380))    
+    print validate(120,totalPuntos("Plus",400))
+    print validate(231,totalPuntos("Plus+",420))
+end
+20
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_puntosObtenidos
+  test_puntosAdicionales
+  test_totalPuntos
+  puts " "
+end
+test
