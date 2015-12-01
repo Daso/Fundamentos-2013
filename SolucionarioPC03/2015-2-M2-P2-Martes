@@ -1,0 +1,64 @@
+=begin 
+Una empresa de seguridad requiere poder verificar códigos de acceso para pago mediante tarjetas de crédito vía Internet. Para ello requiere de tres subprogramas que resuelvan algoritmos complejos:
+
+El primero de ellos debe determinar la coincidencia de un dígito en un número de n cifras. El algoritmo deberá poder contar la cantidad de coincidencias de un dígito dentro de un número. Para ello puede usar cualquier método como, por ejemplo, la división de un número entre diez para obtener el último dígito. Por ejemplo, si el número es 12347234 y el digito es 5, se obtendrá como resultado 0; si el número es 12923344 y el digito es 4, se obtendrá como resultado 2.
+
+De igual manera se requiere determinar la suma de todos los dígitos del número. Así el número 534 nos dará como resultado 12. Para ello se pide elaborar un segundo sub programa que permita desarrollar lo solicitado. 
+
+=end
+
+
+def obtener_coincidencias(valor, cifra)
+  contador = 0
+  while valor > 0
+    if valor % 10 == cifra
+      contador += 1
+    end
+    valor = valor / 10
+  end
+  contador
+end
+
+def obtener_suma(valor)
+  acumulador = 0
+  while valor > 0
+    acumulador = acumulador + valor % 10
+    valor = valor / 10
+  end
+  acumulador
+end
+
+
+#--- zona del programa principal ----
+
+#--- zona de test ----
+
+def test_obtener_coincidencias
+    print validate(3, obtener_coincidencias(664261,6))
+    print validate(0, obtener_coincidencias(1984234,5))   
+    print validate(2, obtener_coincidencias(11788221,8))    
+	print validate(3, obtener_coincidencias(117861,1))    
+end
+
+
+def test_obtener_suma
+    print validate(15, obtener_suma(456))
+    print validate(14, obtener_suma(122324))
+    print validate(11, obtener_suma(1901))
+	print validate(8, obtener_suma(1511))
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_obtener_coincidencias
+  puts " "
+  test_obtener_suma
+  puts " "
+end
+test
