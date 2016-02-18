@@ -1,0 +1,94 @@
+Un aeropuerto quiere facilitar el intercambio de información entre los pasajeros y las líneas aéreas. Para esto ha definido un formato de datos que brinda información acerca de la aerolínea, el número de vuelo, estado del vuelo, hora de vuelo.
+El formato es el siguiente:
+
+AAAVVVVVVEHHHHH
+
+En donde los los 3 primeros caracteres representan el nombre de la aerolínea
+Los 6 subsiguientes caracteres representan el número de vuelo
+El subsiguiente carácter es el estado del vuelo
+Finalmente los últimos 5 caracteres representan la hora de vuelo programada (Ejm: 18:15). El formato es en horas de 24 horas
+
+a)	Dado un arreglo con los datos definidos, determinar el estado de un vuelo. 
+
+b)	Dado un arreglo con los datos definidos y el nombre de una aerolínea, determinar cuántos vuelos retrasados tiene dicha aerolínea. Nota: Cuando un vuelo está retrasado, el estado es D
+
+c)	Dado un arreglo devolver el número de vuelos que salen desde de las 18 horas
+
+
+def obtenerEstadoVuelo(vuelos, nroVuelo)
+  for i in 0...vuelos.size
+    if nroVuelo == vuelos[i][3..8] 
+      respuesta = vuelos[i][9]
+    end
+  end
+  respuesta
+end
+    
+def obtenerNumeroVuelosRetradadosAerolinea(vuelos,aerolinea)
+  contador = 0
+  for i in 0...vuelos.size
+    if vuelos[i][0..2] == aerolinea 
+	  if vuelos[i][9] == "D"
+	    contador += 1
+	  end
+	end 
+  end 
+  contador
+end
+
+def obtenerVuelosDespues18Horas(vuelos)
+  contador = 0
+  for i in 0...vuelos.size
+    if (vuelos[i][10..11]).to_i >= 18
+      contador += 1
+    end	
+  end
+  contador  
+end
+
+#----------Zona de Test------------------
+
+def test_obtenerEstadoVuelo
+  print validate("D", obtenerEstadoVuelo(@vuelos, "AV1223"))
+  print validate("D", obtenerEstadoVuelo(@vuelos, "AA0034"))
+  print validate("C", obtenerEstadoVuelo(@vuelos, "CP0123"))
+end
+    
+def test_obtenerNumeroVuelosRetradadosAerolinea
+	print validate(2, obtenerNumeroVuelosRetradadosAerolinea(@vuelos,"AAR"))
+    print validate(1, obtenerNumeroVuelosRetradadosAerolinea(@vuelos,"AVI"))
+	print validate(0, obtenerNumeroVuelosRetradadosAerolinea(@vuelos,"TAM"))
+end
+
+def test_obtenerVuelosDespues18Horas
+	print validate(4, obtenerVuelosDespues18Horas(@vuelos))
+    print validate(1, obtenerVuelosDespues18Horas(@vuelos2))
+end
+
+#----------------zona de test-----------------
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+	@vuelos = ["AVIAV1223D12:34",
+		       "LANLA0342T03:35",
+		       "AARAA0034D18:35",
+		       "COPCP0234D19:35",
+		       "AARAA1280D18:01",
+		       "IBEIB0079C19:55",
+		       "COPCP0123C15:35"]
+		
+	@vuelos2 = ["AVIAV1223D12:34",
+		       "LANLA0342T23:35",
+		       "COPCP0123C15:35"]
+
+	puts "Test de prueba del programa"
+	puts "---------------------------"
+	test_obtenerEstadoVuelo
+	test_obtenerNumeroVuelosRetradadosAerolinea
+	test_obtenerVuelosDespues18Horas
+	puts " "
+end
+test
