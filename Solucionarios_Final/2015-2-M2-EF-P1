@@ -1,0 +1,106 @@
+Colas de Atención
+
+El Touring de Piura ha detectado que cada día existen más ciudadanos que se acercan para poder realizar los distintos trámites que ofrece dicha entidad. Se ha hecho un estudio de tiempos y sobre la información recolectada se desea obtener cierta información. Existen 3 tipos de trámites que se realizan en dicha agencia: 
+
+	N: Nuevo Brevete
+	R: Renovación de Brevete
+	D: Duplicado de Brevete
+	
+Se le solicita:
+
+a)	Obtener el tiempo promedio de atención para los trámites. Se tiene como dato de entrada un arreglo con todos los tiempos tomados por cada trámite realizado.
+
+b)	Obtener que tipo de trámite es el que se demora más en atender. Se tiene como datos de entrada dos arreglos, el primero es el tipo de trámite realizado y el segundo es el tiempo que tomo cada trámite. 
+
+c)	Se desea obtener quien fue el agente que más tiempo se demoró en atender algún trámite. Se tiene como dato de entrada un arreglo con el tiempo que tomó cada trámite y otro que tiene el nombre del agente que atendió dicho trámite.
+
+d)	Finalmente se requiere tener un arreglo que permita tener solo los tiempos de un tipo de trámite. Se tiene como datos de entrada tres datos: dos arreglos, el primero es el tipo de trámite realizado, el segundo es el tiempo que tomo cada trámite y el tercero dato es el tipo de tramite a buscar.
+
+Nota: Considerar que ningún tiempo puede ser igual a otro.
+
+
+def obtenerTiempoPromedioAtencionTramite(tiempoTramites)
+  acumulador = 0.0
+  for i in 0...tiempoTramites.size
+    acumulador = acumulador + tiempoTramites[i]
+  end 
+  (acumulador / tiempoTramites.size).round(2)
+end    
+
+def obtenerTramiteMasDemoraAtender(tipoTramites, tiempoTramites)
+  mayor = tiempoTramites[0]
+  posicion = 0
+  for i in 0...tiempoTramites.size
+    if tiempoTramites[i] > mayor
+	  mayor = tiempoTramites[i]
+	  posicion = i 
+	end
+  end  
+  tipoTramites[posicion]
+end
+
+def obtenerAgenteMasDemoroAtender(tiempoTramites,nombresAgente)
+   mayor = tiempoTramites[0]
+  posicion = 0
+  for i in 0...tiempoTramites.size
+    if tiempoTramites[i] > mayor
+	  mayor = tiempoTramites[i]
+	  posicion = i 
+	end
+  end  
+  nombresAgente[posicion]
+end
+
+def obtenerArregloConTipoTramite(tipoTramites, tiempoTramite, nombreTramiteBuscar)
+  resultado = []
+  for i in 0...tiempoTramite.size
+    if tipoTramites[i] == nombreTramiteBuscar
+	  resultado << tiempoTramite[i] 
+	end 
+  end  
+  resultado
+end
+
+#--- zona de test ----
+
+def test_obtenerTiempoPromedioAtencionTramite
+  print validate(4.57,obtenerTiempoPromedioAtencionTramite(@tiempo1))
+  print validate(14.57,obtenerTiempoPromedioAtencionTramite(@tiempo2))
+end
+
+def test_obtenerTramiteMasDemoraAtender
+  print validate('N',obtenerTramiteMasDemoraAtender(@tramite1,@tiempo1))
+  print validate('R',obtenerTramiteMasDemoraAtender(@tramite2,@tiempo2))
+end
+
+def test_obtenerAgenteMasDemoroAtender
+   print validate("Hugo",obtenerAgenteMasDemoroAtender(@tiempo1,@agente1))
+   print validate("Paco",obtenerAgenteMasDemoroAtender(@tiempo2,@agente2))  
+end
+
+def test_obtenerArregloConTipoTramite
+   print validate([3],obtenerArregloConTipoTramite(@tramite1,@tiempo1,'D'))
+   print validate([15,16,14,13],obtenerArregloConTipoTramite(@tramite2,@tiempo2,'D'))
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+  @tramite1 = ['N','N','R','N','R','N','D']
+  @tiempo1 = [5,6,2,7,4,5,3]
+  @agente1 = ["Hugo","Paco","Hugo","Hugo","Paco","Hugo","Hugo"]
+  
+  @tramite2 = ['D','D','R','R','D','N','D']
+  @tiempo2 = [15,16,12,17,14,15,13]
+  @agente2 = ["Hugo","Paco","Paco","Paco","Hugo","Hugo","Hugo"]
+  
+  puts "---------------------------"
+  test_obtenerTiempoPromedioAtencionTramite
+  test_obtenerTramiteMasDemoraAtender
+  test_obtenerAgenteMasDemoroAtender
+  test_obtenerArregloConTipoTramite
+  puts " "
+end
+test
