@@ -1,0 +1,111 @@
+=begin 
+Un conocido programa de televisión ha promocionado una feria gastronómica en un distrito de la ciudad de Lima. Para seto ha seleccionado una serie de restaurantes los cuales han acordado tener 3 tipos de tamaños del plato. Los precios dependen del tipo de comida que ofrece cada restaurante. El cuadro de precios se muestra en la tabla que se muestra a continuación:
+
+             Criolla   Pachamanca  Selvatica
+Ligero        8.00      9.50         8.90
+Mediano       12.00     14.00       13.00
+Contundenete  15.00     17.50       16.00
+
+Adicionalmente, para el caso de las bebidas, se ha dispuesto de stands a lo largo de la feria. Las bebidas se muestran en la siguiente tabla:
+
+Precio (S/.)
+Gaseosa 2.00
+Chicha  2.50
+Limonada  3.00
+Cerveza 6.00
+ 
+Se pide lo siguiente:
+1.  Dada una bebida, determinar el precio a pagar
+2.  Dado un plato y el tamaño del mismo, determinar el precio a pagar
+3.  Si adicionalmente la compra de la bebida con el plato de comida es mayor o igual a 15 soles, el cliente se hace acreedor a un postre de cortesía. Determinar si un cliente tiene o no acceso al postre de cortesía.
+
+
+=end
+
+def calcularPrecioBebida(bebida)
+	case bebida
+    when "Gaseosa"
+      2.00
+    when "Chicha"
+      2.50
+    else
+      3.00
+   end  
+end
+
+def calcularPrecioComida(tipoPlato, tamanioPlato)
+  case tamanioPlato
+  when "Ligero"
+     case tipoPlato
+     when "Criolla"
+       8.00
+     when "Pachamanca"
+       9.50
+     else
+       8.90
+     end
+  when "Mediano"
+     case tipoPlato
+     when "Criolla"
+      12.00
+     when "Pachamanca"
+      14.00
+     else
+      13.00
+     end
+  else
+     case tipoPlato
+     when "Criolla"
+       15.00
+     when "Pachamanca"
+        17.50
+     else
+        16.00
+     end
+  end
+end
+
+def calcularAccesoDescuento(bebida, tipoPlato, tamanioPlato)
+   if calcularPrecioBebida(bebida) + calcularPrecioComida(tipoPlato, tamanioPlato) >= 15
+    true
+  else
+    false
+  end
+end
+
+#--- zona de test ----
+
+def test_calcularPrecioBebida
+  print validate(2.00, calcularPrecioBebida("Gaseosa")) 
+	print validate(2.50, calcularPrecioBebida("Chicha")) 
+	print validate(3.00, calcularPrecioBebida("Limonada")) 
+end
+
+def test_calcularPrecioComida
+    print validate(8.00, calcularPrecioComida("Criolla", "Ligero")) 
+	print validate(14.00, calcularPrecioComida("Pachamanca", "Mediano")) 
+	print validate(13.00, calcularPrecioComida("Selvatica", "Mediano")) 
+	print validate(17.50, calcularPrecioComida("Pachamanca", "Contundente")) 
+end
+
+def test_calcularAccesoDescuento
+    print validate(true, calcularAccesoDescuento("Limonada","Pachamanca", "Mediano")) 
+	print validate(false, calcularAccesoDescuento("Gaseosa","Selvatica", "Ligero")) 
+	print validate(false, calcularAccesoDescuento("Cerveza","Criolla", "Ligero")) 
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+ 
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_calcularPrecioBebida
+  test_calcularPrecioComida
+  test_calcularAccesoDescuento
+  puts " "
+  
+end
+test
