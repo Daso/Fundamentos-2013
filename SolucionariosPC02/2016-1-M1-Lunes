@@ -1,0 +1,105 @@
+=begin 
+Un supermercado ofrece a sus clientes descuentos de acuerdo al monto de compra, como se muestra en el siguiente cuadro: 
+ 
+Monto Compra (S/.)	Descuento (%)
+0 – 250					0
+251 – 500				5
+501 - más			   10
+	
+El porcentaje de descuento se aplica al monto de compra.
+
+Dependiendo del rubro de la compra, se le aplica un impuesto sobre la compra descontada, los porcentajes de impuesto se muestra en la siguiente tabla.
+
+Rubro		Impuesto (%)
+Comestibles		6
+Bebidas			8
+Juguetes		10
+
+Se desea conocer el importe a pagar por un cliente, en soles y en dolares, sabiendo que el tipo de cambio es de 3.25.
+
+a.	Desarrollar un subprograma que permita calcular el importe del descuento
+b.	Desarrollar un subprograma que determine el impuesto a aplicar
+c.	Desarrollar un subprograma que determine el importe final a pagar por el cliente, en soles. 
+d.	Desarrollar un subprograma que determine el importe final a pagar por el cliente, en dolares
+
+
+
+=end
+
+
+def importeDescuento(montoCompra)
+  case montoCompra
+  when 0..250
+  	porcentaje = 0.0
+  when 251..500
+  	porcentaje = 0.05
+  else
+  	porcentaje = 0.10
+  end
+  montoCompra * porcentaje
+end
+def importeImpuesto(montoCompra,rubro)
+  descuento = importeDescuento(montoCompra)
+  case rubro
+  when "Comestibles" 
+    impuesto = 0.06
+  when "Bebidas"
+    impuesto = 0.08
+  else
+    impuesto = 0.10
+  end  
+  ((montoCompra - descuento)	* impuesto).round(2)  	
+end
+
+def importeaPagarSoles(montoCompra,rubro)
+  descuento = importeDescuento(montoCompra)
+  impuesto = importeImpuesto(montoCompra,rubro)
+  (montoCompra - descuento) + impuesto
+end
+
+def importeaPagarDolares(montoCompra,rubro,tipoCambio)
+  (importeaPagarSoles(montoCompra,rubro) / 3.25).round(2)
+end
+
+#--------------zona de test-------------------
+def test_importeDescuento
+  print validate(0.00, importeDescuento(200))
+  print validate(20.00, importeDescuento(400))
+  print validate(80.00, importeDescuento(800))
+end
+
+def test_importeImpuesto
+  print validate(12.00, importeImpuesto(200,"Comestibles"))
+  print validate(30.40, importeImpuesto(400,"Bebidas"))
+  print validate(72.00, importeImpuesto(800,"Juguetes"))
+end
+
+def test_importeaPagarSoles
+  print validate(212.00, importeaPagarSoles(200,"Comestibles"))
+  print validate(410.40, importeaPagarSoles(400,"Bebidas"))
+  print validate(792.00, importeaPagarSoles(800,"Juguetes"))
+end
+
+def test_importeaPagarDolares
+  print validate(65.23, importeaPagarDolares(200,"Comestibles",3.25))
+  print validate(126.28, importeaPagarDolares(400,"Bebidas",3.25))
+  print validate(243.69, importeaPagarDolares(800,"Juguetes",3.25))
+end
+
+def validate (expected, value)
+ expected == value ? "." : "F"
+end
+
+def test
+   
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_importeDescuento
+  puts " "
+  test_importeImpuesto
+  puts " "
+  test_importeaPagarSoles  
+  puts " "
+  test_importeaPagarDolares
+end
+test
