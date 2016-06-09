@@ -1,0 +1,100 @@
+=begin 
+Se solicita realizar las siguientes evaluaciones a una cadena de caracteres mediante el uso de algoritmos
+
+1)	Conteo de palabras dentro de una oración.
+2)	Cuantas veces se repite una letra dentro de una oración.
+3)	Cuantos números existen dentro de una oración.
+
+=end
+
+def obtenerCantidadRepetidas(frase,letra)
+  contador = 0
+  for i in 0...frase.size
+    if frase[i] == letra
+	  contador += 1 
+	end
+  end
+  contador
+end
+
+def obtenerCantidadPalabras(frase)
+  contador = 1
+  for i in 0...frase.size
+    if frase[i] == " "
+	  contador += 1 
+	end
+  end 
+  contador 
+end
+
+def obtenerCantidadNumeros(frase)
+  contador = 0 
+  for i in 0...frase.size
+    case frase[i] 
+	when "1"
+	 contador += 1 
+	when "2"
+	 contador += 1
+	when "3"
+	 contador += 1
+	when "4"
+	 contador += 1
+	when "5"
+	 contador += 1
+	when "6"
+	 contador += 1
+	when "7"
+	 contador += 1
+	when "8"
+	 contador += 1
+	when "9"
+	contador += 1
+	when "0"
+	 contador += 1
+	end
+  end
+  contador
+end
+
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+@frase1 = "Hola como estas"
+@frase2 = "Estoy estudiando Ingenieria Industrial en la UPC"
+@frase3 = "Tengo 32 años, estoy en 5to ciclo y llevando 4 cursos"
+@frase4 = "Mi promedio ponderado anterior fue de 15.67 y puedo llevar 5 cursos"
+
+def test_obtenerCantidadRepetidas
+    print validate(3,obtenerCantidadRepetidas(@frase1,"o"))
+    print validate(4,obtenerCantidadRepetidas(@frase2,"e"))
+    print validate(4,obtenerCantidadRepetidas(@frase3,"s"))
+    print validate(0,obtenerCantidadRepetidas(@frase4,"z"))
+end
+
+def test_obtenerCantidadPalabras
+	print validate(3,obtenerCantidadPalabras(@frase1))
+	print validate(7,obtenerCantidadPalabras(@frase2))
+	print validate(11,obtenerCantidadPalabras(@frase3))
+	print validate(12,obtenerCantidadPalabras(@frase4))
+end
+
+def test_obtenerCantidadNumeros
+	print validate(0,obtenerCantidadNumeros(@frase1))
+	print validate(0,obtenerCantidadNumeros(@frase2))
+	print validate(4,obtenerCantidadNumeros(@frase3))
+	print validate(5,obtenerCantidadNumeros(@frase4))
+end
+
+def test
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_obtenerCantidadRepetidas
+  test_obtenerCantidadPalabras
+  test_obtenerCantidadNumeros
+  puts ""
+end
+
+test
