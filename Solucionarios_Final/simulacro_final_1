@@ -1,0 +1,131 @@
+=begin 
+Una feria estudiantil se ha llevado a cabo durante la primera semana del mes de febrero, la idea era poder captar nuevos estudiantes para las diferentes carreras que se están aperturando para este nuevo ingreso 2016-1.
+
+La información consignada como cosecha para el primero grupo de postulantes con tiene la información siguiente:
+
+a)	Código del postulante
+b)	Apellidos
+c)	Nombres
+d)	Carrera de interés
+
+Como es una feria de lanzamiento, las carreras ofrecidas cuentan con un descuento inicial y este descuento se debe aplicar al valor total de la carrera, luego de aplicar ese descuento se puede obtener el valor de la cuota que el alumno debe pagar durante los 4 años que dura la carrera elegida.
+Los descuentos se enumeran en la siguiente tabla:
+
+Carrera						Abreviatura		Costo Total	Descuento
+Ingeniería de Sistemas		Sistemas		45000			10%
+Ingeniería Industrial		Industrial		48000			15%
+Administración de Empresas	Administracion	39000			12%
+Negocios Internacionales	Negocios		41000			 8%
+
+Se solicita lo siguiente:
+1)	Un subprograma que permita obtener el costo total de una carrera.
+2)	Un subprograma que permita obtener el descuento de una carrera.
+3)	Un subprograma que permita obtener, en base al código del postulante, el valor de la cuota mensual que deberá pagar mensualmente durante el tiempo que dure la carrera elegida, incluyendo el descuento.
+4)	Un subprograma que obtenga al postulante con la cuota más alta.
+
+
+=end 
+
+def obtenerCostoCarrera(carrera)
+  case carrera
+  when "Sistemas"
+    45000
+  when "Negocios"
+    41000
+  when "Administracion"
+    39000
+  when "Industrial"
+    48000
+  else
+    0
+  end 
+end
+
+def obtenerDescuentoCarrera(carrera)
+  case carrera
+  when "Sistemas"
+    0.10 
+  when "Negocios"
+    0.08
+  when "Administracion"
+    0.12
+  when "Industrial"
+    0.15
+  else
+    0
+  end 
+end
+
+def calcularCuotaMensual(codigos, carreras, codAlumno)
+  indice = 0 
+  for i in 0...codigos.size
+    if codAlumno == codigos[i]
+	  indice = i 
+	end 
+  end 
+  carrera = carreras[indice]
+  costo = obtenerCostoCarrera(carrera)
+  descuento = obtenerDescuentoCarrera(carrera)  
+  (costo - (costo * descuento)) / 48  
+end
+
+def obtenerAlumnoCuotaMasAlta(codigos,nombres,apellidos,carreras)
+  mayor = 0
+  indice = 0 
+  arreglo = []
+  for i in 0...codigos.size
+    cuota = calcularCuotaMensual(codigos, carreras, codigos[i])
+    if cuota > mayor 
+      mayor = cuota
+	  indice = i 
+    end 	
+  end 
+  arreglo << "#{nombres[indice]} #{apellidos[indice]}"
+  arreglo << mayor 
+  arreglo
+end
+
+#--- zona de test ----
+
+def validate(expected, value)    
+  expected == value ? "." : "F"
+end
+
+@codigos = ["p054","p067","p026","p039","p012"]
+@nombres = ["Jose","Carlos","Gisella","Sofia","Alberto"]
+@apellidos = ["Garcia","Torres","Jimenez","Gamboa","Segura"]
+@carreras = ["Administracion","Sistemas","Industrial","Negocios","Marketing"]
+
+def test_obtenerCostoCarrera
+    print validate(45000,obtenerCostoCarrera("Sistemas"))
+    print validate(41000,obtenerCostoCarrera("Negocios"))
+    print validate(0,obtenerCostoCarrera("Marketing"))
+end
+
+def test_obtenerDescuentoCarrera
+    print validate(0.15,obtenerDescuentoCarrera("Industrial"))
+    print validate(0.12,obtenerDescuentoCarrera("Administracion"))
+    print validate(0.10,obtenerDescuentoCarrera("Sistemas"))
+end
+
+def test_calcularCuotaMensual
+    print validate(850,calcularCuotaMensual(@codigos,@carreras,"p026"))
+    print validate(715,calcularCuotaMensual(@codigos,@carreras,"p054"))
+    print validate(0,calcularCuotaMensual(@codigos,@carreras,"p012"))
+end
+
+def test_listarAlumnos
+	print validate(["Gisella Jimenez", 850],obtenerAlumnoCuotaMasAlta(@codigos,@nombres,@apellidos,@carreras))
+end
+
+def test
+  puts "Test de prueba del programa"
+  puts "---------------------------"
+  test_obtenerCostoCarrera
+  test_obtenerDescuentoCarrera
+  test_calcularCuotaMensual
+  test_listarAlumnos
+  puts ""
+end
+
+test
