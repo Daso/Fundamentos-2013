@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @Daso
- Sign out
- Unwatch 2
-  Star 4
- Fork 7 Daso/Fundamentos-2013
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathFundamentos-2013/SolucionarioPC03/2015-M1-PC03-martes-P1.rb
-9faf144  on 2 Apr 2016
-@Daso Daso Rename 2015-M1-PC03-martes to 2015-M1-PC03-martes-P1.rb
-1 contributor
-RawBlameHistory     
-50 lines (36 sloc)  1.55 KB
 =begin 
 Una persona tiene un dinero que ha heredado. Necesita tomar la decisión de dónde colocarlo para que le rinda una rentabilidad adecuada. Para esto, ha investigado que un banco le puede ofrecer por su dinero en modalidad a Plazo Fijo, una atractiva oferta.
 La oferta consiste en tener tasas de interés escalonadas por el tiempo que su dinero estará sin moverlo a una tasa flat (es decir, el interés se calcula por el monto * tasa /100). La tasa inicial ofrecida, se le aumenta un punto porcentual por cada tres meses de permanencia y es con capitalización mensual.
