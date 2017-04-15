@@ -33,11 +33,42 @@ La empresa necesita lo siguiente:
 =end 
 
 def validar_codigo(numero)
- 
+  contador = 0
+  while numero > 0
+    numero = numero / 10
+    contador = contador + 1
+  end
+  if contador == 11
+    "correcto"
+  else
+    "incorrecto"
+  end
 end
 
 def validar_digito(numero)
- 
+ if validar_codigo(numero) == "correcto"
+    pares = 0
+    impares = 0
+    verificacion = numero % 10  
+    numero = numero / 10
+    for i in 1..10
+      if i % 2 == 0
+        impares = impares + numero % 10
+      else
+        pares = pares + numero % 10
+      end
+      numero = numero / 10
+      
+    end
+    suma_codigo = pares * 2 + impares * 3
+    if verificacion == suma_codigo % 10
+      "digito correcto"
+    else
+      "error digito"
+    end
+ else
+   "error digito"
+ end
 end
 
 #----------Zona de Test------------------
