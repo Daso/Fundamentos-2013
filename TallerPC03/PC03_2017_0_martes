@@ -1,10 +1,10 @@
 Los afiliados a la APF que tienen 65 años pueden retirar un porcentaje de su fondo. Para ello una persona quiere invertir el dinero en un banco como depósito a plazo fijo. Para ello, necesita saber ¿Cuál será el rendimiento de su dinero en un tiempo determinado? Las tasas que ofrece el banco van de acuerdo al rango de dinero invertido de acuerdo a la siguiente tabla:
 
 Tipo de Producto	Rango de montos	Interés mensual
-Rango A	Hasta 10,000	4%
-Rango B	Hasta 50,000	6%
-Rango C	Hasta 100,000	8%
-Rango D	>100,000	10%
+Rango A	    Hasta 10,000	            4%
+Rango B	     Hasta 50,000	            6%
+Rango C	    Hasta 100,000	            8%
+Rango D	    >100,000	               10%
 
 Con esta tasa de interés se debe calcular el interés que generará en el tiempo por el monto ingresado. Tomando en cuenta que el interés es capitalizable mes a mes, es decir que para un nuevo cálculo de intereses, se calcula sobre el monto más los intereses del período anterior.
 
