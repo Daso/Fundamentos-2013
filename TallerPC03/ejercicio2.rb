@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @Daso
- Sign out
- Unwatch 2
-  Star 4
- Fork 7 Daso/Fundamentos-2013
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathFundamentos-2013/SolucionarioPC03/2015-1-m1-miércoles-p1.rb
-684405a  on 3 Jun 2015
-@Daso Daso Create 2015-1-m1-miércoles-p1.rb
-1 contributor
-RawBlameHistory     
-98 lines (79 sloc)  2.6 KB
 =begin 
 Pregunta 1 
 Debido al fenómeno del niño el gobierno requiere 
@@ -85,5 +67,3 @@ def test
   test_mes_alarma
 end
 test
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
