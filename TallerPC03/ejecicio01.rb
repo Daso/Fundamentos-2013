@@ -10,7 +10,16 @@ Desarrollar un subprograma que determine el interés total que ganará la person
 =end 
 
 def calcularInteresTotal(meses,monto,tasa)
-
+  total = 0
+  for i in 1..meses
+    if i % 3 == 0
+      tasa = tasa + 1
+    end
+    interes = monto * tasa / 100
+    total = total + interes
+    monto = monto + interes
+  end
+  total.round(2)
 end
 
 #--- zona de test ----
