@@ -29,11 +29,30 @@ temperatura entre el mes 3 y 7
 =end
 
 def nueva_temperatura(mes_inicial, mes_final, temperatura_actual)
- 
+  for i in mes_inicial..mes_final
+    case i
+    when 1, 4, 7, 10
+      temperatura_actual = temperatura_actual * 1.15
+    when 2, 3, 11, 6
+      temperatura_actual = temperatura_actual * 0.87
+    else
+      temperatura_actual = temperatura_actual * 1.12
+    end
+  end
+  temperatura_actual.round(2)
 end
 
 def mes_alarma(mes_inicial, mes_maximo, temperatura_actual)
-  
+  mes_mayor = 0
+  temperatura_mayor = 0
+  for i in mes_inicial..mes_maximo
+    temperatura = nueva_temperatura(mes_inicial, i, temperatura_actual)
+    if temperatura > temperatura_mayor
+      temperatura_mayor = temperatura
+      mes_mayor = i
+    end
+  end
+  mes_mayor
 end
 
 #--- zona del programa principal ----
