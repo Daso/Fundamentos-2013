@@ -6,7 +6,7 @@ La oferta consiste en tener tasas de interés escalonadas por el tiempo que su d
 Por ejemplo: con un capital de 1000, una tasa de 10% mensual en 3 meses. Capitalización mensual ganará lo siguiente.
 1000 * 0.10 = 100
 1100 * 0.10 = 110
-1210 * 0.11 = 131.10
+1210 * 0.11 = 133.10
 	      		    343.10 es lo que ganará la persona al cabo de 3 meses
 
 Desarrollar un subprograma que determine el interés total que ganará la persona.
