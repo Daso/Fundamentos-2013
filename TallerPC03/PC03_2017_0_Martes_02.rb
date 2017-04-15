@@ -1,46 +1,58 @@
- La compañía de seguros “Te auxilia” está definiendo una nueva forma de cálculo para sus seguros obligatorios para autos.
-
-Según esta nueva definición, el importe del seguro obligatorio autos depende del modelo del coche, de la antigüedad del coche y de la calificación que se le da al conductor según su historial de manejo. 
-
-Existen tres modelos de autos: Sedán, deportivo y SUV. 
-
-Para calcular el importe de la prima se utiliza el siguiente cuadro:
-
-
-Modelo	  Antigüedad	                            Precio (US$)
-Sedán	Menor a 3 años	                          250.00
-	    Mayor o igual a 3 años y menor de 7 años	400.50
-	    Mayor o igual a 7 años	                  630.50
-Deportivo	
-      Menor a 3 años		                        350.00
-	    Mayor o igual a 3 años y menor de 7 años.	450.50
-	    Mayor o igual a 7 años	                  730.50
-SUV	
-      Menor a 3 años	                           650.00
-	    Mayor o igual a 3 años	                    840.50
-
-
-La calificación que se da al conductor tiene cuatro valores: A, B, C y D. Si el conductor tiene una calificación de A, el precio de la prima se mantiene. Si el conductor tiene una calificación de B el precio de la prima se incrementa en 20%. Si el conductor tiene una calificación de C el precio de la prima se incrementa un 25%. Finalmente si el conductor tiene una calificación de D el precio de la prima se incrementa en 40%.
-
-Además, en cualquier caso, hay que considerar que si el conductor tiene menos de 2 años el permiso de conducir, el precio se incrementará un 10% adicional. 
-
-Se pide desarrollar un programa que realice lo siguiente:
-
-1.	Obtener el precio del seguro según el modelo y la antigüedad.
-2.	Obtener el porcentaje de incremento sobre el precio según la calificación del conductor.
-3.	Obtener el precio total a pagar por el seguro.
-
 #encoding:UTF-8
 def obtenerPrecioModeloAntiguedad(modelo,antiguedad)
-
+	case modelo
+		when "Sedan"
+			if antiguedad >= 7
+				return 630.50
+			elsif antiguedad >= 3
+				return 400.50
+			else
+				return 250.00
+			end
+		when "Deportivo"
+			if antiguedad >= 7
+				return 730.50
+			elsif antiguedad >= 3
+				return 450.50
+			else
+				return 350.00
+			end
+			
+		when "SUV"
+			if antiguedad >= 3
+				return 840.50
+			else
+				return 650.00
+			end
+		else
+			return 0.00
+	end
 end
 
 def obtenerPorcentajeCalificacion(calificacion)
-
+	case calificacion
+		when "A"
+			return 0.0
+		when "B"
+			return 0.20
+		when "C"
+			return 0.25
+		when "D"
+			return 0.40
+		else
+			return 0.0
+	end
 end
 
-def calcularTotal(modelo,antiguedad,calificacion,tiempoPermiso)
 
+def calcularTotal(modelo,antiguedad,calificacion,tiempoPermiso)
+	porcPermiso = 0.0
+	
+	if tiempoPermiso < 2 then
+		porcPermiso = 0.10
+	end
+	
+	return ((obtenerPrecioModeloAntiguedad(modelo,antiguedad)*(1+obtenerPorcentajeCalificacion(calificacion)))*(1+porcPermiso)).round(2)
 end
 
 #--- zona de test ----
