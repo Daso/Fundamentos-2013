@@ -32,19 +32,38 @@ las ganancias de ambos con un mismo monto.
 =end
 
 def interes(tipo)
-
+  if tipo == "b"
+    0.08
+  elsif tipo == "m"
+    0.12
+  else
+    0.15
+  end
 end
 
 def fondos_mutuos(tipo, monto, tiempo)
- 
+  porcentaje = interes(tipo)
+  for i in 1..tiempo
+    monto = monto + (monto * porcentaje)
+  end
+  monto.round(2)
 end
 
 def plazo_fijo(monto,tasa, tiempo)
-
+	tiempo.times do 
+    monto += (monto * tasa)
+  end
+  monto.round(2)
 end
 
 def mejor_opcion(monto, tipo, tiempo_fondos, tiempo_plazo_fijo, tasa)
- 
+  fondos = fondos_mutuos(tipo, monto, tiempo_fondos)
+  plazo = plazo_fijo(monto,tasa, tiempo_plazo_fijo)
+  if fondos > plazo
+    "Fondos Mutuos"
+  else
+    "Plazo Fijo"
+  end
 end
 
 #--- zona del programa principal ----
